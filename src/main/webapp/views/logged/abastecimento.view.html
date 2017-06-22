@@ -1,4 +1,9 @@
 <h3>Abastecimento</h3>
+<script> 
+$(document).ready(function(){
+    $("#textinput-precoPorLitro").maskMoney({showSymbol:true,symbol:"R$", decimal:",", thousands:".", allowZero:true});
+});
+</script>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
   <datasource filter="" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
@@ -117,8 +122,11 @@
             <div style="position:relative">
               <input type="text" as-date
               format="DD/MM/YYYY HH:mm:ss"
-              ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Data" >
-            </div>
+              mask="DD/MM/YYYY HH:mm:ss"
+              ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Ex: 01/01/2000" required=""
+              title="Por favor, digite a data."
+              >
+              </div>
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-quilometragemRodada">
@@ -129,7 +137,10 @@
               ng-model="Abastecimento.active.quilometragemRodada"
               class="form-control"
               id="textinput-quilometragemRodada"
-              placeholder="Quilometragem Rodada"
+              placeholder="Ex: 10"
+              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00"
+              required=""
+              title="Por favor, digite a quilometragem rodada."
               >
           </div>
         </div>
@@ -137,11 +148,14 @@
           <div class="form-group">
             <label for="textinput-litros" class="">Litros</label>
             <input
-              type="text"
+              type="number"
               ng-model="Abastecimento.active.litros"
               class="form-control"
               id="textinput-litros"
-              placeholder="Litros"
+              placeholder="Ex: 2.5"
+              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00"
+              required=""
+              title="Por favor, digite a quantidade de litros."
               >
           </div>
         </div>
@@ -151,9 +165,12 @@
             <input
               type="text"
               ng-model="Abastecimento.active.combustivel"
+              maxlength="50"
               class="form-control"
               id="textinput-combustivel"
-              placeholder="Combustivel"
+              placeholder="Ex: gasolina"
+              required=""
+              oninvalid="setCustomValidity('Por favor, digite o combustível com no máximo 50 caracteres.')" onchange="try{setCustomValidity('')}catch(e){}"
               >
           </div>
         </div>
@@ -165,7 +182,9 @@
               ng-model="Abastecimento.active.precoPorLitro"
               class="form-control"
               id="textinput-precoPorLitro"
-              placeholder="Preco Por Litro"
+              placeholder="Ex: R$ 3,99"
+              required=""
+              oninvalid="setCustomValidity('Por favor, digite o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
               >
           </div>
         </div>
@@ -175,7 +194,8 @@
         <div data-component="crn-combobox" id="crn-combobox-user">
           <div class="form-group">
             <label for="combobox-user" class="">User</label>
-            <ui-select ng-model="Abastecimento.active.user" crn-datasource="user" class="crn-select" id="combobox-user" >
+            <ui-select ng-model="Abastecimento.active.user" crn-datasource="user" class="crn-select" id="combobox-user" required=""
+              oninvalid="setCustomValidity('Por favor, selecione o usuario.')" onchange="try{setCustomValidity('')}catch(e){}">
               <ui-select-match class="">
                 {{$select.selected.email}}
               </ui-select-match>
@@ -193,7 +213,8 @@
         <div data-component="crn-combobox" id="crn-combobox-posto">
           <div class="form-group">
             <label for="combobox-posto" class="">Posto</label>
-            <ui-select ng-model="Abastecimento.active.posto" crn-datasource="posto" class="crn-select" id="combobox-posto" >
+            <ui-select ng-model="Abastecimento.active.posto" crn-datasource="posto" class="crn-select" id="combobox-posto" required=""
+              oninvalid="setCustomValidity('Por favor, selecione o posto.')" onchange="try{setCustomValidity('')}catch(e){}">
               <ui-select-match class="">
                 {{$select.selected.nome}}
               </ui-select-match>
@@ -211,7 +232,8 @@
         <div data-component="crn-combobox" id="crn-combobox-carro">
           <div class="form-group">
             <label for="combobox-carro" class="">Carro</label>
-            <ui-select ng-model="Abastecimento.active.carro" crn-datasource="carro" class="crn-select" id="combobox-carro" >
+            <ui-select ng-model="Abastecimento.active.carro" crn-datasource="carro" class="crn-select" id="combobox-carro" required=""
+              oninvalid="setCustomValidity('Por favor, selecione o carro.')" onchange="try{setCustomValidity('')}catch(e){}">
               <ui-select-match class="">
                 {{$select.selected.marca}}
                  {{$select.selected.modelo}}
