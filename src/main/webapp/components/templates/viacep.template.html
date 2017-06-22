@@ -1,0 +1,58 @@
+<div ng-controller="CtrlViaCep">
+     <div data-container="true" id="starter" >
+        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+            <div class="form-group">
+                <label for="exampleInputEmail1">CEP</label>
+                <input type="text" ng-change="viacep()"   name="zipcode" ng-model="address.zipcode"  class="form-control" id="textinput-id" placeholder="Digite o CEP">
+            </div>
+        </div>
+    
+
+
+
+        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Logradouro</label>
+                <input type="text" name="street" ng-model="address.logradouro" via-cep="logradouro" disabled class="form-control" id="textinput-id" >
+            </div>
+        </div>
+   
+
+
+  
+        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Bairro</label>
+                <input type="text" name="neighborhood" ng-model="address.bairro"  disabled class="form-control" id="textinput-id" >
+            </div>
+        </div>
+
+
+        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+            <div class="form-group">
+                <label for="exampleInputEmail1">UF</label>
+                <input type="text" name="uf" ng-model="address.uf" via-cep="uf" disabled class="form-control" id="textinput-id" >
+            </div>
+        </div>
+   
+
+
+   
+        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Cidade</label>
+                <input type="text" name="city" ng-model="address.localidade"  disabled class="form-control" id="textinput-id" >
+            </div>
+        </div>
+
+
+
+   
+        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Unidade</label>
+                <input type="text" name="unit" ng-model="address.unidade" v disabled class="form-control" id="textinput-id" >
+            </div>
+        </div>
+    </div>
+</div>  

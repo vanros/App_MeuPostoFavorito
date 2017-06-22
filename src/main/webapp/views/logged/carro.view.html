@@ -1,0 +1,182 @@
+<h3>Carro</h3>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (e) {
+        $("#divConteudo").hide();
+
+        $("#btnMostrarEsconder").click(function (e) {
+            $("#divConteudo").toggle();
+        });
+    });
+</script>
+
+<div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
+  <datasource filter="" name="Carro" entity="api/rest/Carro" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+</div>
+<div data-component="crn-button" id="crn-button-564202">
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="Carro.startInserting()" ng-hide="Carro.inserting || Carro.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
+</div>
+<div class="component-holder" data-component="crn-grid" id="crn-grid-Carro">
+  <div crn-datasource="Carro" ng-hide="Carro.editing || Carro.inserting">
+    <table class="table  table-bordered table-hover table-striped">
+      <thead>
+        <tr class="table-header">
+          <th>
+            <div>Marca </div>
+          </th>
+          <th>
+            <div>Modelo</div>
+          </th>
+          <th>
+            <div>Placa</div>
+          </th>
+          <th>
+            <div>{{"template.crud.actions" | translate}}</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-content" ng-repeat="rowData in datasource.data">
+          <td>
+            <div>
+              {{rowData.marca}}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{rowData.modelo}}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{rowData.placa}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
+              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="table-footer-controls">
+      <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
+    </div>
+  </div>
+</div>
+
+ <div id="divConteudo">
+        <div data-container="true" id="starter"><div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-966654"><datasource name="Carro" entity="api/rest/Carro" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" filter=""></datasource></div><div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-634701"><datasource name="ConsumoMedio" entity="api/rest/Carro" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" filter="/{{Carro.active.id}}/ConsumoMedio" dependent-by="{{Carro}}"></datasource></div><div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-596773"><div class="form-group">
+  <label for="">Selecione o Carro</label>
+  <ui-select crn-datasource="Carro" ng-model="datasource.active" ng-disabled="disabled" theme="bootstrap" class="crn-select">
+    <ui-select-match placeholder="Select...">{{$select.selected.placa}}</ui-select-match>
+    <ui-select-choices repeat="rowData as rowData in datasource.data | filter : $select.search" refresh="" refresh-deplay="">
+      <div data-container="true">{{rowData.placa}}</div>
+    </ui-select-choices>
+  </ui-select>
+</div></div><div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-609622"><div crn-datasource="ConsumoMedio">
+  <table class="table  table-bordered table-hover">
+    <thead>
+      <tr class="table-header">
+        <th class="active"><div data-container="true">Consumo Médio</div></th>
+        
+      </tr>
+    </thead>
+      <tbody><tr class="table-content" ng-repeat="rowData in datasource.data">
+        <td class="active"><div data-container="true">{{rowData.mediaConsumoCarro}}</div></td>
+        
+        
+      </tr>
+    </tbody>
+  </table>
+  <div class="table-footer-controls">
+    <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">Load more...</button>
+  </div>
+</div></div></div>
+</div>
+
+<button class="btn btn-success" id="btnMostrarEsconder" ><i class="glyphicon glyphicon-list-alt"></i> <span class="">Ver Consumo Médio</span> </button>
+
+<div data-component="crn-form" id="crn-form-form-Carro">
+  <div class="form" ng-show="Carro.editing || Carro.inserting">
+    <form crn-datasource="Carro">
+      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
+        <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
+        <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
+      </div>
+      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
+        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
+        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
+      </div>
+      <br>
+      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+        <div data-component="crn-textinput" id="crn-textinput-marca">
+          <div class="form-group">
+            <label for="textinput-marca">Marca</label>
+            <input ng-model="Carro.active.marca" class="form-control" pattern=".{1,50}" required="" title="Escreva uma Marca com no máximo 50 caracteres" id="textinput-marca" placeholder="Marca com tamanho máximo de 50 letras" type="text">
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-modelo">
+          <div class="form-group">
+            <label for="textinput-modelo">Modelo</label>
+            <input ng-model="Carro.active.modelo" class="form-control" pattern=".{1,50}" required="" title="Escreva um modelo com no máximo 50 caracteres" id="textinput-modelo" placeholder="Modelo com tamanho máximo de 50 letras" type="text">
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-ano">
+          <div class="form-group">
+            <label for="textinput-ano">Ano</label>
+            <input ng-model="Carro.active.ano"
+            class="form-control" min="1900"
+            max="2018"
+            pattern="[0-9]{4}"
+            required="" 
+            title ="Escreva um ano válido" 
+            id="textinput-ano" placeholder="Insira um ano entre 1900 e 2018" 
+            type="number">
+          </div>
+        </div>
+        <div data-component="crn-datasource" class="component-holder">
+          <datasource name="user" entity="api/security/User" keys="id" dependent-by="{{Carro}}"></datasource>
+        </div>
+        <div data-component="crn-combobox" id="crn-combobox-user">
+          <div class="form-group">
+            <label for="combobox-user">User</label>
+            <ui-select ng-model="Carro.active.user" crn-datasource="user" class="crn-select" id="combobox-user">
+              <ui-select-match>
+                {{$select.selected.email}}
+              </ui-select-match>
+              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search">
+                <div data-container="true">
+                  {{rowData.email}}
+                </div>
+              </ui-select-choices>
+            </ui-select>
+          </div>
+        </div>
+        <div data-component="crn-textinput" id="crn-textinput-placa">
+          <div class="form-group">
+            <label for="textinput-placa">Placa</label>
+            <input ng-model="Carro.active.placa" class="form-control" id="textinput-placa" placeholder="Placa deve vir com 3 letras(Maiúsculas) e 4 números" mask="AAA-9999" pattern="[A-Z]{3}-[0-9]{4}" required="" title="Placa deve vir com  e quatro numeros" type="text">
+          </div>
+        </div>
+        <!-- NtoN  -->
+        <!-- NtoN  end-->
+      </fieldset>
+    </form>
+    <form>
+        <fieldset>
+            <!-- OneToN -->
+        <!-- OneToOne  end -->
+        
+        </fieldset>
+    </form>
+    
+    
+  </div>
+</div>

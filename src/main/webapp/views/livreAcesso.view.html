@@ -1,0 +1,82 @@
+<style>
+body {
+    background: url("img/background.jpg") no-repeat center center fixed;
+  background-size: cover; /*Css padrão*/
+  -webkit-background-size: cover; /*Css safari e chrome*/
+  -moz-background-size: cover; /*Css firefox*/
+  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+  -o-background-size: cover; /*Css Opera*/
+}
+</style> 
+<div class="container-full" data-container="true"> 
+  <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-446253" align="right"> 
+    <button class="btn btn-default" type="submit" ng-click="redirectLogin()">Login</button> 
+    <button class="btn btn-default" type="submit" ng-click="redirectRegister()" user.startinserting()="">Cadastro</button>
+    <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-99699"></div>
+    <div class="form-group" data-container="true"> 
+      <!--<button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="form.$invalid || vm.dataLoading">{{"Login.view.Login" | translate}}</button>--> 
+    </div>
+    <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-929129"></div> 
+  </div>
+  <div class="container-fluid" data-container="true"> 
+    <div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-448698">
+    <datasource filter="/listaRankingAbastecimentos" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+    </div>
+    <div class="component-holder ng-binding ng-scope" data-component="crn-button" data-attribute-preview="" id="crn-button-502461"></div>
+    <h3 align="center">Postos Campões de Rentabilidade</h3>
+    <div class="component-holder ng-binding ng-scope" data-component="crn-horizontal-container" data-attribute-preview="" id="crn-horizontal-container-509763">
+      <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-708015">
+        <div crn-datasource="dsPostos"> 
+          <table class="table  table-bordered table-hover"> 
+            <thead> 
+            </thead> 
+            <tbody>
+              <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+              </tr> 
+            </tbody> 
+          </table> 
+          <div class="table-footer-controls"> 
+          </div> 
+        </div>
+      </div>
+      <div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-578679">
+        <div crn-datasource="Abastecimento"> 
+          <table class="table  table-bordered table-hover"> 
+            <thead> 
+              <tr class="table-header"> 
+                <th class="active">
+                  <div data-container="true">
+                    Postos
+                  </div></th> 
+                <th>
+                  <div data-container="true">
+                    Média
+                  </div></th> 
+                <th>
+                  <div data-container="true">
+                    Média Total
+                  </div></th>
+              </tr> 
+            </thead> 
+            <tbody>
+              <tr class="table-content" ng-repeat="rowData in datasource.data"> 
+                <td class="active">{{rowData.nomePosto}}</td> 
+                <td>{{rowData.mediaRentabilidadesPosto}}</td> 
+                <td>{{rowData.mediaRentabilidadeGeral}}</td>
+              </tr> 
+            </tbody> 
+          </table> 
+          <div class="table-footer-controls"> 
+            <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">Load more...</button> 
+          </div> 
+        </div>
+      </div>
+      <div class="row" data-container="true" draggable="true"> 
+        <div class="column col-md-4">
+          <div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-775080"></div>
+        </div> 
+        <div class="column col-md-4"></div> 
+      </div>
+    </div> 
+  </div> 
+</div>
