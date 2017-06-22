@@ -109,6 +109,12 @@ var app = (function() {
             return 'views/' + urlattr.name + '.view.html';
           }
         })
+         .state('comentarios', {
+          url: "home/logged/comentarios",
+          controller: 'PageController',
+          templateUrl: 'views/logged/comentarios.view.html'
+        })
+
 
         .state('404', {
           url: "/error/404",
