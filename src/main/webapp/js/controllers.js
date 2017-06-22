@@ -100,7 +100,9 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
         $scope.selecionado = {
           valor : 1
         }
-        
+         $scope.redirectComentarios = function() {
+            $state.go("comentarios");
+  };
         // refresh token
         $scope.refreshToken = function() {
             $http({
