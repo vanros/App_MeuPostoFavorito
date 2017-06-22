@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <jta-data-source>java:comp/env/jdbc/AppMeupostofavorito1</jta-data-source>
+        <class>app.entity.Carro</class>
+        <class>app.entity.UserRole</class>
+        <class>app.entity.Abastecimento</class>
+        <class>app.entity.User</class>
+        <class>app.entity.Comentario</class>
+        <class>app.entity.Role</class>
+        <class>app.entity.Posto</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/ec8523b1-dc13-4ffa-a460-aac8e49ee717"/>
+            <property name="javax.persistence.jdbc.user" value="rp8523o1qp134ssn"/>
+            <property name="javax.persistence.jdbc.password" value="nn460nnp8r49rr71"/>
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+        </properties>
+    </persistence-unit>
+</persistence>
