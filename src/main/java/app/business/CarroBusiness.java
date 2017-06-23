@@ -188,10 +188,10 @@ public class CarroBusiness {
     Carro carro = null;
     
     for(String m: marcas) {
-      List<String> modelos = repository.listaModelosPorMarca(m);
+      List<String> modelos = abastecimento.recuperaModelosQueTemAbastecimento(m);
       
       for(String mo: modelos){
-        List<Integer> anos = repository.listaAnosPorModelo(mo);
+        List<Integer> anos = abastecimento.recuperaAnosQueTemAbastecimento(mo);
         
         for(Integer a: anos){
           
