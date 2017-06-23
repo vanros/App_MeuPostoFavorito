@@ -147,6 +147,11 @@ public class CarroREST {
     return new ResponseEntity<>(assembler.toResource(carroBusiness.findCarrosByUser(userId, pageable)), HttpStatus.OK);
   }
   
+  @RequestMapping(method = RequestMethod.GET, value="/listaRankingCarro")
+  public HttpEntity<PagedResources<CarroVO2>> listaRankingCarro(Pageable pageable, PagedResourcesAssembler assembler){
+    return new ResponseEntity<>(assembler.toResource(carroBusiness.listaRankingCarro(pageable)), HttpStatus.OK);    
+  }
+  
   
   
 }
