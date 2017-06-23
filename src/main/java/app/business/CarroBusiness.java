@@ -10,6 +10,8 @@ import app.dao.*;
 import app.entity.*;
 import org.springframework.data.domain.PageImpl;
 
+
+
 /**
  * Classe que representa a camada de negócios de CarroBusiness
  * 
@@ -28,6 +30,9 @@ public class CarroBusiness {
   @Autowired
   @Qualifier("CarroDAO")
   protected CarroDAO repository;
+  
+  @Qualifier("AbastecimentoDAO")
+  protected AbastecimentoDAO abastecimento;
 
   // CRUD
 
@@ -168,5 +173,72 @@ public class CarroBusiness {
     // end-user-code        
     return result;
   }
+  
+  public Page<CarroVO2> listaRankingCarro(Pageable pageable) {
+    List<String> marcas = abastecimento.recuperaMarcasQueTemAbastecimento();
+    Double acm = 0.0;
+    Double mediaRentabilidade = 0.0;
+    Page<Abastecimento> temp;
+    List<CarroVO2> listaMediaDasRentabilidades = new ArrayList<CarroVO2>();
+    
+    CarroVO2 carroVO2;
+    
+    List<Abastecimento> abastecimentosDeUmaMarcaModeloAno;
+    
+    Carro carro = null;
+    
+    for(String m: marcas) {
+      List<String> modelos = repository.listaModelosPorMarca(m);
+      
+      for(String mo: modelos){
+        List<Integer> anos = repository.listaAnosPorModelo(mo);
+        
+        for(Integer a: anos){
+          
+          temp = abastecimento.listaAbastecimentosPorMarcaModeloAno(m, mo, a, pageable);
+          abastecimentosDeUmaMarcaModeloAno = temp.getContent();
+           
+           for (Abastecimento abastecimento : abastecimentosDeUmaMarcaModeloAno) {
+				      acm = acm + (abastecimento.getQuilometragemRodada() / abastecimento.getPrecoPorLitro());
+			      }
+			      
+			      mediaRentabilidade = acm / abastecimentosDeUmaMarcaModeloAno.size();
+			      
+			      carroVO2 = new CarroVO2(m, mo, a, mediaRentabilidade, 0.0);
+			      
+			      listaMediaDasRentabilidades.add(carroVO2);
+			      carroVO2 = null;
+			      acm = 0.0;
+			      mediaRentabilidade = 0.0;
+        }
+        
+      }
+
+    }
+    
+     Double acmDeMedias = 0.0;
+		 for (CarroVO2 c : listaMediaDasRentabilidades) {
+			      acmDeMedias = acmDeMedias + c.getMediaRentabilidadesCarro();
+		  }
+		    
+		Double mediaTotal = acmDeMedias / listaMediaDasRentabilidades.size();
+		for (CarroVO2 ca : listaMediaDasRentabilidades) {
+			   ca.setMediaRentabilidadeGeral(mediaTotal);
+		}
+		
+		
+		Collections.sort(listaMediaDasRentabilidades, new Comparator<CarroVO2>() {
+			@Override
+			public int compare(CarroVO2 c1, CarroVO2 c2) {
+				return c1.getMediaRentabilidadesCarro().compareTo(c2.getMediaRentabilidadesCarro());
+			}
+		});
+
+		final Page<CarroVO2> retorno = new PageImpl<>(listaMediaDasRentabilidades);
+
+		return retorno;
+    
+  }
+
   
 }

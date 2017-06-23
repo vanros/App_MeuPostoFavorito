@@ -8,6 +8,7 @@ import org.springframework.data.domain.*;
 import org.springframework.data.repository.query.*;
 import org.springframework.transaction.annotation.*; 
 
+
 /**
  * Realiza operação de Create, Read, Update e Delete no banco de dados.
  * Os métodos de create, edit, delete e outros estão abstraídos no JpaRepository
@@ -59,12 +60,21 @@ public interface CarroDAO extends JpaRepository<Carro, java.lang.String> {
    */
   @Query("SELECT entity FROM Abastecimento entity WHERE entity.carro.id = :id")
   public Page<Abastecimento> findAbastecimento(@Param(value="id") java.lang.String id, Pageable pageable);
+  
+  @Query("SELECT c FROM Carro c  WHERE c.marca = :marca")
+  public Carro findCarroByMarca(@Param(value="marca") java.lang.String marca, Pageable pageable);
 
   /**
    * Foreign Key user
    * @generated
    */
-  @Query("SELECT entity FROM Carro entity WHERE entity.user.id = :id")
+  @Query("SELECT entity FROM Carro entity WHERE c.user.id = :id")
   public Page<Carro> findCarrosByUser(@Param(value="id") java.lang.String id, Pageable pageable);
+  
+  @Query("SELECT c.modelo FROM Carro c  WHERE c.marca = :marca")
+  public List<String> listaModelosPorMarca(@Param(value="marca") java.lang.String marca);
+  
+  @Query("SELECT c.ano FROM Carro c  WHERE c.modelo = :modelo")
+  public List<Integer> listaAnosPorModelo(@Param(value="modelo") java.lang.String modelo);
 
 }

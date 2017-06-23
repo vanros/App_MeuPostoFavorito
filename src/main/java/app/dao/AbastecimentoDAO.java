@@ -78,7 +78,17 @@ public interface AbastecimentoDAO extends JpaRepository<Abastecimento, java.lang
    @Query("select a from Abastecimento a where a.posto.id = :postoId ")
   public Page<Abastecimento> listaAbastecimentosPorPosto(@Param(value="postoId") java.lang.String postoId, Pageable pageable);
   
+  @Query("select a from Abastecimento a where a.carro.marca = :marca and a.carro.modelo = :modelo and a.carro.ano= :ano")
+  public Page<Abastecimento> listaAbastecimentosPorMarcaModeloAno(@Param(value="marca")java.lang.String marca, @Param(value="modelo")java.lang.String modelo, @Param(value="ano")java.lang.Integer ano, Pageable pageable);
+  
   @Query("select distinct a.posto.id from Abastecimento a")
   public List<String> recuperaPostosQueTemAbastecimento();
+  
+  @Query("select distinct a.carro.id from Abastecimento a")
+  public List<String> recuperaCarrosQueTemAbastecimento();
+  
+  @Query("select distinct a.carro.marca from Abastecimento a")
+  public List<String> recuperaMarcasQueTemAbastecimento();
+
 
 }
