@@ -100,6 +100,11 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
         $scope.selecionado = {
           valor : 1
         }
+        
+         $scope.redirectCarrosCampeoes = function() {
+            $state.go("mediaRentabilidadeCarro");
+  };
+        
          $scope.redirectComentarios = function() {
             $state.go("comentarios");
   };

@@ -48,20 +48,26 @@ public class Posto implements Serializable {
   /**
   * @generated
   */
+  @Column(name = "numero", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String numero;
+  
+  /**
+  * @generated
+  */
   @Column(name = "bairro", nullable = true, unique = false, insertable=true, updatable=true)
   private java.lang.String bairro;
   
   /**
   * @generated
   */
-  @Column(name = "uf", nullable = true, unique = false, insertable=true, updatable=true)
-  private java.lang.String uf;
+  @Column(name = "cidade", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String cidade;
   
   /**
   * @generated
   */
-  @Column(name = "cidade", nullable = true, unique = false, insertable=true, updatable=true)
-  private java.lang.String cidade;
+  @Column(name = "uf", nullable = true, unique = false, insertable=true, updatable=true)
+  private java.lang.String uf;
   
   /**
    * Construtor
@@ -148,6 +154,25 @@ public class Posto implements Serializable {
   }
   
   /**
+   * Obtém numero
+   * return numero
+   * @generated
+   */
+  public java.lang.String getNumero(){
+    return this.numero;
+  }
+  
+  /**
+   * Define numero
+   * @param numero numero
+   * @generated
+   */
+  public Posto setNumero(java.lang.String numero){
+    this.numero = numero;
+    return this;
+  }
+  
+  /**
    * Obtém bairro
    * return bairro
    * @generated
@@ -167,25 +192,6 @@ public class Posto implements Serializable {
   }
   
   /**
-   * Obtém uf
-   * return uf
-   * @generated
-   */
-  public java.lang.String getUf(){
-    return this.uf;
-  }
-  
-  /**
-   * Define uf
-   * @param uf uf
-   * @generated
-   */
-  public Posto setUf(java.lang.String uf){
-    this.uf = uf;
-    return this;
-  }
-  
-  /**
    * Obtém cidade
    * return cidade
    * @generated
@@ -201,6 +207,25 @@ public class Posto implements Serializable {
    */
   public Posto setCidade(java.lang.String cidade){
     this.cidade = cidade;
+    return this;
+  }
+  
+  /**
+   * Obtém uf
+   * return uf
+   * @generated
+   */
+  public java.lang.String getUf(){
+    return this.uf;
+  }
+  
+  /**
+   * Define uf
+   * @param uf uf
+   * @generated
+   */
+  public Posto setUf(java.lang.String uf){
+    this.uf = uf;
     return this;
   }
   

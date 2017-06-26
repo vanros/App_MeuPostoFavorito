@@ -148,6 +148,7 @@ public class AbastecimentoBusiness {
 
 		AbastecimentoVO abastecimentoVO;
 		List<AbastecimentoVO> listaMediaDasRentabilidades = new ArrayList<AbastecimentoVO>();
+		List<AbastecimentoVO> listaPostosCampeoes = new ArrayList<AbastecimentoVO>();
 
 		List<String> postos = repository.recuperaPostosQueTemAbastecimento();
 
@@ -188,16 +189,20 @@ public class AbastecimentoBusiness {
 
 		for (AbastecimentoVO a : listaMediaDasRentabilidades) {
 			a.setMediaRentabilidadeGeral(mediaTotal);
+			if(a.getMediaRentabilidadesPosto() >= mediaTotal){
+			  listaPostosCampeoes.add(a);
+			  
+			}
 		}
 
-		Collections.sort(listaMediaDasRentabilidades, new Comparator<AbastecimentoVO>() {
+		Collections.sort(listaPostosCampeoes, new Comparator<AbastecimentoVO>() {
 			@Override
 			public int compare(AbastecimentoVO a1, AbastecimentoVO a2) {
 				return a1.getMediaRentabilidadesPosto().compareTo(a2.getMediaRentabilidadesPosto());
 			}
 		});
 
-		final Page<AbastecimentoVO> retorno = new PageImpl<>(listaMediaDasRentabilidades);
+		final Page<AbastecimentoVO> retorno = new PageImpl<>(listaPostosCampeoes);
 
 		return retorno;
 	}
@@ -208,6 +213,7 @@ public class AbastecimentoBusiness {
     Double mediaRentabilidade = 0.0;
     Page<Abastecimento> temp;
     List<CarroVO2> listaMediaDasRentabilidades = new ArrayList<CarroVO2>();
+    List<CarroVO2> listaCarrosCampeoes = new ArrayList<CarroVO2>();
     
     CarroVO2 carroVO2;
     
@@ -252,17 +258,21 @@ public class AbastecimentoBusiness {
 		Double mediaTotal = acmDeMedias / listaMediaDasRentabilidades.size();
 		for (CarroVO2 ca : listaMediaDasRentabilidades) {
 			   ca.setMediaRentabilidadeGeral(mediaTotal);
+			   if(ca.getMediaRentabilidadesCarro() >= mediaTotal){
+			     listaCarrosCampeoes.add(ca);
+			     
+			   }
 		}
 		
 		
-		Collections.sort(listaMediaDasRentabilidades, new Comparator<CarroVO2>() {
+		Collections.sort(listaCarrosCampeoes, new Comparator<CarroVO2>() {
 			@Override
 			public int compare(CarroVO2 c1, CarroVO2 c2) {
 				return c1.getMediaRentabilidadesCarro().compareTo(c2.getMediaRentabilidadesCarro());
 			}
 		});
 
-		final Page<CarroVO2> retorno = new PageImpl<>(listaMediaDasRentabilidades);
+		final Page<CarroVO2> retorno = new PageImpl<>(listaCarrosCampeoes);
 
 		return retorno;
     

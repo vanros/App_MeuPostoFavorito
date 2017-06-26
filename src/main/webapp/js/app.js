@@ -96,6 +96,12 @@ var app = (function() {
           templateUrl: 'views/logged/home.view.html'
         })
         
+        .state('mediaRentabilidadeCarro', {
+          url: "/home/logged/mediaRentabilidadeCarro",
+          controller: 'HomeController',
+          templateUrl: 'views/logged/mediaRentabilidadeCarro.view.html'
+        })
+        
         .state('consumoMedio', {
           url: "/consumoMedio",
           controller: 'HomeController',

@@ -1,96 +1,105 @@
 <h3>Abastecimento</h3>
 
+<script src="//raw.github.com/plentz/jquery-maskmoney/master/jquery.maskMoney.js" type="text/javascript"></script>
 <script> 
-    $(document).ready(function(){
-        $("#textinput-precoPorLitro").maskMoney({showSymbol:true,symbol:"R$", decimal:",", thousands:".", allowZero:true});
-    });
+  $(document).ready(function(){
+      var $j = jQuery.noConflict(); 
+  
+     $j("#textinput-precoPorLitro").maskMoney({thousands:".", decimal:".", symbol:"R$", showSymbol:true, symbolStay:true, allowZero : true});
+
+});
 </script>
 
-
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
-  <button class="btn btn-primary" type="submit" onclick="" ng-click="Abastecimento.startInserting()" ng-hide="Abastecimento.inserting || Abastecimento.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="Abastecimento.startInserting()" ng-hide="Abastecimento.inserting || Abastecimento.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
 </div>
 <div class="component-holder" data-component="crn-grid" id="crn-grid-Abastecimento">
-  <div crn-datasource="Abastecimento" class="" ng-hide="Abastecimento.editing || Abastecimento.inserting">
+  <div crn-datasource="Abastecimento" ng-hide="Abastecimento.editing || Abastecimento.inserting">
     <table class="table  table-bordered table-hover table-striped">
       <thead>
         <tr class="table-header">
-          <th class="">
-            <div class="">Data</div>
+          <th>
+            <div>Id</div>
           </th>
-          <th class="">
-            <div class="">Quilometragem Rodada</div>
+          <th>
+            <div>Data</div>
           </th>
-          <th class="">
-            <div class="">Litros</div>
+          <th>
+            <div>Quilometragem Rodada</div>
           </th>
-          <th class="">
-            <div class="">Combustivel</div>
+          <th>
+            <div>Litros</div>
           </th>
-          <th class="">
-            <div class="">Preco Por Litro</div>
+          <th>
+            <div>Combustivel</div>
           </th>
-          <th class="">
-            <div class="">User</div>
+          <th>
+            <div>Preco Por Litro</div>
           </th>
-          <th class="">
-            <div class="">Posto</div>
+          <th>
+            <div>User</div>
           </th>
-          <th class="">
-            <div class="">Carro</div>
+          <th>
+            <div>Posto</div>
           </th>
-          <th class="">
-            <div class="">{{"template.crud.actions" | translate}}</div>
+          <th>
+            <div>Carro</div>
+          </th>
+          <th>
+            <div>{{"template.crud.actions" | translate}}</div>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr class="table-content" ng-repeat="rowData in datasource.data">
-          <td class="">
-            <div class="">
+          <td>
+            <div>
+              {{rowData.id}}
+            </div>
+          </td>
+          <td>
+            <div>
               {{rowData.data | date:'dd/MM/yyyy HH:mm:ss'}}
             </div>
           </td>
-          <td class="">
-            <div class="">
+          <td>
+            <div>
               {{rowData.quilometragemRodada}}
             </div>
           </td>
-          <td class="">
-            <div class="">
+          <td>
+            <div>
               {{rowData.litros}}
             </div>
           </td>
-          <td class="">
-            <div class="">
+          <td>
+            <div>
               {{rowData.combustivel}}
             </div>
           </td>
-          <td class="">
-            <div class="">
-              {{rowData.precoPorLitro}}
-            </div>
+          <td>
+            <div>{{rowData.precoPorLitro}}</div>
           </td>
-          <td class="">
-            <div class="">
+          <td>
+            <div>
               {{rowData.user.email}}
             </div>
           </td>
-          <td class="">
-            <div class="">
+          <td>
+            <div>
               {{rowData.posto.nome}}
             </div>
           </td>
-          <td class="">
-            <div class="">
+          <td>
+            <div>
               {{rowData.carro.marca}}
             </div>
           </td>
-          <td class="">
-            <div class="">
+          <td>
+            <div>
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
             </div>
@@ -105,7 +114,7 @@
 </div>
 <div data-component="crn-form" id="crn-form-form-Abastecimento">
   <div class="form" ng-show="Abastecimento.editing || Abastecimento.inserting">
-    <form crn-datasource="Abastecimento" class="">
+    <form crn-datasource="Abastecimento">
       <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
         <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
         <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
@@ -117,91 +126,54 @@
         <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
         <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
       </div>
-      <br/>
+      <br>
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
         <div data-component="crn-textinput" id="crn-textinput-data">
           <div class="form-group">
-            <label for="textinput-data" class="">Data</label>
+              
+            <label for="textinput-data">Data</label>
             <div style="position:relative">
-              <input type="text" as-date
-              format="DD/MM/YYYY HH:mm:ss"
-              mask="DD/MM/YYYY HH:mm:ss"
-              ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Ex: 01/01/2001" title="Por favor, insira a data." >
+              <input type="text" as-date="" format="DD/MM/YYYY HH:mm:ss" required="" ng-model="Abastecimento.active.data" class="form-control" id="textinput-data" placeholder="Ex: 01/01/2001" title="Por favor, insira a data.">
+              
             </div>
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-quilometragemRodada">
           <div class="form-group">
-            <label for="textinput-quilometragemRodada" class="">Quilometragem Rodada</label>
-            <input
-              type="text"
-              ng-model="Abastecimento.active.quilometragemRodada"
-              class="form-control"
-              id="textinput-quilometragemRodada"
-              placeholder="Ex: 10"
-              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00"
-              required=""
-              title="Por favor, digite a quilometragem rodada."
-              >
+            <label for="textinput-quilometragemRodada">Quilometragem Rodada</label>
+            <input type="text" ng-model="Abastecimento.active.quilometragemRodada" class="form-control" id="textinput-quilometragemRodada" placeholder="Ex: 10" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" required="" title="Por favor, digite a quilometragem rodada.">
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-litros">
           <div class="form-group">
-            <label for="textinput-litros" class="">Litros</label>
-            <input
-              type="text"
-              ng-model="Abastecimento.active.litros"
-              class="form-control"
-              id="textinput-litros"
-              placeholder="Ex: 2.5"
-              onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00"
-              required=""
-              title="Por favor, digite a quantidade de litros."
-              >
+            <label for="textinput-litros">Litros</label>
+            <input type="number" ng-model="Abastecimento.active.litros" class="form-control" id="textinput-litros" placeholder="Ex: 2.5" onchange="(function(el){el.value=parseFloat(el.value).toFixed(2);})(this)" step="0.01" value="0.00" required="" title="Por favor, digite a quantidade de litros.">
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-combustivel">
           <div class="form-group">
-            <label for="textinput-combustivel" class="">Combustivel</label>
-            <input
-              type="text"
-              maxlength="50"
-              ng-model="Abastecimento.active.combustivel"
-              class="form-control"
-              id="textinput-combustivel"
-              placeholder="Ex: gasolina"
-              required=""
-              oninvalid="setCustomValidity('Por favor, digite o combustível com no máximo 50 caracteres.')" onchange="try{setCustomValidity('')}catch(e){}"
-              
-              >
+            <label for="textinput-combustivel">Combustivel</label>
+             <input type="text" maxlength="50" ng-model="Abastecimento.active.combustivel" class="form-control" id="textinput-combustivel" placeholder="Ex: gasolina" required="" oninvalid="setCustomValidity('Por favor, digite o combustível com no máximo 50 caracteres.')" onchange="try{setCustomValidity('')}catch(e){}">
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-precoPorLitro">
           <div class="form-group">
-            <label for="textinput-precoPorLitro" class="">Preco Por Litro</label>
-            <input
-              type="text"
-              ng-model="Abastecimento.active.precoPorLitro"
-              class="form-control"
-              id="textinput-precoPorLitro"
-              placeholder="Ex: R$ 3,99"
-              required=""
-              oninvalid="setCustomValidity('Por favor, digite o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
-              >
+            <label for="textinput-precoPorLitro">Preco Por Litro</label>
+           <input type="text"  prependId="false" ng-model="Abastecimento.active.precoPorLitro" class="form-control" id="textinput-precoPorLitro" placeholder="Ex: R$ 3,99" required="" title="Por favor, insira o preço">
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="user" entity="api/security/User" keys="id" class="" dependent-by="{{Abastecimento}}"></datasource>
+          <datasource name="user" entity="api/security/User" keys="id" dependent-by="{{Abastecimento}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-user">
           <div class="form-group">
-            <label for="combobox-user" class="">User</label>
-            <ui-select ng-model="Abastecimento.active.user" crn-datasource="user" class="crn-select" id="combobox-user" required="" >
-              <ui-select-match class="">
+            <label for="combobox-user">User</label>
+            <ui-select ng-model="Abastecimento.active.user" crn-datasource="user" class="crn-select" id="combobox-user">
+              <ui-select-match>
                 {{$select.selected.email}}
               </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
-                <div class="" data-container="true">
+              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search">
+                <div data-container="true">
                   {{rowData.email}}
                 </div>
               </ui-select-choices>
@@ -209,17 +181,17 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="posto" entity="api/rest/Posto" keys="id" class="" dependent-by="{{Abastecimento}}"></datasource>
+          <datasource name="posto" entity="api/rest/Posto" keys="id" dependent-by="{{Abastecimento}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-posto">
           <div class="form-group">
-            <label for="combobox-posto" class="">Posto</label>
-            <ui-select ng-model="Abastecimento.active.posto" crn-datasource="posto" class="crn-select" id="combobox-posto" required="" >
-              <ui-select-match class="">
+            <label for="combobox-posto">Posto</label>
+            <ui-select ng-model="Abastecimento.active.posto" crn-datasource="posto" class="crn-select" id="combobox-posto">
+              <ui-select-match>
                 {{$select.selected.nome}}
               </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
-                <div class="" data-container="true">
+              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search">
+                <div data-container="true">
                   {{rowData.nome}}
                 </div>
               </ui-select-choices>
@@ -227,20 +199,21 @@
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
-          <datasource name="carro" entity="api/rest/Carro" keys="id" class="" dependent-by="{{Abastecimento}}"></datasource>
+          <datasource name="carro" entity="api/rest/Carro" keys="id" dependent-by="{{Abastecimento}}"></datasource>
         </div>
         <div data-component="crn-combobox" id="crn-combobox-carro">
           <div class="form-group">
-            <label for="combobox-carro" class="">Carro</label>
-            <ui-select ng-model="Abastecimento.active.carro" crn-datasource="carro" class="crn-select" id="combobox-carro" required="" >
-              <ui-select-match class="">
+            <label for="combobox-carro">Carro</label>
+            <ui-select ng-model="Abastecimento.active.carro" crn-datasource="carro" class="crn-select" id="combobox-carro">
+              <ui-select-match>
                 {{$select.selected.marca}}
-                {{$select.selected.modelo}}
+                 {{$select.selected.modelo}}
               </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
-                <div class="" data-container="true">
+              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search">
+                <div data-container="true">
                   {{rowData.marca}}
-                  {{$select.selected.modelo}}
+                  {{rowData.modelo}}
+ 
                 </div>
               </ui-select-choices>
             </ui-select>

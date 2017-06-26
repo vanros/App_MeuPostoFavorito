@@ -2,172 +2,95 @@
 <div class="row" ng-hide="Posto.inserting || Posto.editing">
   <div class="col-md-2">
     <div>
-      <label for="textinput-filter">{{"template.crud.search" | translate}} Nome</label>
-      <input type="text" ng-model="nome" class="form-control" value="" placeholder="Nome">
+      <label for="textinput-filter" class="">{{"template.crud.search" | translate}} Nome</label>
+      <input type="text" ng-model="nome" class="form-control" value="" placeholder="Nome" >
     </div>
   </div>
 </div>
-<br>
+<br/>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="?nome={{nome}}" name="Posto" entity="api/rest/Posto/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+  <datasource filter="?nome={{nome}}" name="Posto" entity="api/rest/Posto/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
-  <button class="btn btn-primary" type="submit" onclick="" ng-click="Posto.startInserting()" ng-hide="Posto.inserting || Posto.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
+  <button class="btn btn-primary" type="submit" onclick="" ng-click="Posto.startInserting()" ng-hide="Posto.inserting || Posto.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
 </div>
 <div class="component-holder" data-component="crn-grid" id="crn-grid-Posto">
-  <div crn-datasource="Posto" ng-hide="Posto.editing || Posto.inserting">
+  <div crn-datasource="Posto" class="" ng-hide="Posto.editing || Posto.inserting">
     <table class="table  table-bordered table-hover table-striped">
       <thead>
         <tr class="table-header">
-          <th>
-            <div>Nome</div>
+          <th class="">
+            <div class="">Nome</div>
           </th>
-          <th>
-            <div>Cep</div>
+          <th class="">
+            <div class="">Cep</div>
           </th>
-          <th>
-            <div>Logradouro</div>
+          <th class="">
+            <div class="">Logradouro</div>
           </th>
-          <th>
-            <div>Bairro</div>
+          <th class="">
+            <div class="">Numero</div>
           </th>
-          <th>
-            <div>Uf</div>
+          <th class="">
+            <div class="">Bairro</div>
           </th>
-          <th>
-            <div>Cidade</div>
+          <th class="">
+            <div class="">Cidade</div>
           </th>
-          <th>
-            <div>{{"template.crud.actions" | translate}}</div>
+          <th class="">
+            <div class="">Uf</div>
           </th>
-                     <th>
-            <div>
-              Comentários
-            </div>
+          <th class="">
+            <div class="">{{"template.crud.actions" | translate}}</div>
           </th>
-
         </tr>
       </thead>
       <tbody>
         <tr class="table-content" ng-repeat="rowData in datasource.data">
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               {{rowData.nome}}
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               {{rowData.cep}}
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               {{rowData.logradouro}}
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
+              {{rowData.numero}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
               {{rowData.bairro}}
             </div>
           </td>
-          <td>
-            <div>
-              {{rowData.uf}}
-            </div>
-          </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
               {{rowData.cidade}}
             </div>
           </td>
-          <td>
-            <div>
+          <td class="">
+            <div class="">
+              {{rowData.uf}}
+            </div>
+          </td>
+          <td class="">
+            <div class="">
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
               <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
             </div>
           </td>
-                     <td>
-            <div>
-    <div data-component="crn-datasource" class="component-holder">
-          <datasource filter="" name="ComentarioGrid" enabled="{{Posto.editing || Posto.inserting}}" entity="api/rest/Posto/{{Posto.active.id}}/Comentario" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Posto" dependent-lazy-post-field="posto"></datasource>
-        </div>
-        <button class="btn btn-danger" onclick="$('#modalComentarioGrid').modal('show');" ng-click="ComentarioGrid.startInserting();"><i class="glyphicon glyphicon-comment"></i> <span class="">{{"Add" | translate}} Comentario</span> </button>
-        
-        <button class="btn btn-info"  ng-click="redirectComentarios()"><i class="glyphicon glyphicon-list-alt"></i> <span class="">Ver Comentarios</span> </button>
-
-        <div class="modal fade" id="modalComentarioGrid">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Comentario</h4>
-              </div>
-              <div class="modal-body">
-                <div class="text-danger wrapper text-center" ng-show="authError">
-                </div>
-                <div class="list-group list-group-sm">
-                  <div data-component="crn-textinput" id="crn-textinput-data">
-                    <div class="form-group">
-                      <label for="textinput-data">Data</label>
-                      <div style="position:relative">
-                        <input as-date="" format="DD/MM/YYYY HH:mm:ss" ng-model="ComentarioGrid.active.data" class="form-control" id="textinput-data" placeholder="Data" type="text">
-                      </div>
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-texto">
-                    <div class="form-group">
-                        
-                      <label for="textinput-texto">Texto</label>
-                       <textarea  ng-model="ComentarioGrid.active.texto" class="form-control" id="textinput-texto" placeholder="Texto" type="text"  rows="3"></textarea>
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-nota">
-                    <div class="form-group">
-                      <label for="textinput-nota">Nota</label>
-                      <input ng-model="ComentarioGrid.active.nota" class="form-control" id="textinput-nota" placeholder="Nota" type="number">
-                    </div>
-                  </div>
-                  <div data-component="crn-textinput" id="crn-textinput-moderado">
-                    <div class="form-group">
-                      <label for="textinput-moderado">Moderado</label>
-                      <input ng-model="ComentarioGrid.active.moderado" id="textinput-moderado" placeholder="Moderado" type="checkbox">
-                    </div>
-                  </div>
-              <div data-component="crn-datasource" class="component-holder">
-                    <datasource name="userGridForUiSelect" entity="api/security/User" keys="id" rows-per-page="100" ></datasource>
-                  </div>
-                  <div data-component="crn-combobox" id="crn-combobox-ComentarioGrid.active.user">
-                    <div class="form-group">
-                      <label for="combobox-user" class="">Users</label>
-                      <ui-select ng-model="ComentarioGrid.active.user" crn-datasource="userGridForUiSelect" class="crn-select" id="combobox-user" required="required" >
-                        <ui-select-match class="">
-                          {{$select.selected.email}}
-                        </ui-select-match>
-                        <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
-                          <div class="" data-container="true">
-                            {{rowData.email}}
-                          </div>
-                        </ui-select-choices>
-                      </ui-select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="ComentarioGrid.post();" onclick="(!ComentarioGrid.missingRequiredField()?$('#modalComentarioGrid').modal('hide'):void(0))">{{'Save' | translate}}</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">{{'Home.view.Close' | translate}}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-            </div>
-          </td>
-
         </tr>
       </tbody>
     </table>
-
     <div class="table-footer-controls">
       <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
     </div>
@@ -175,7 +98,7 @@
 </div>
 <div data-component="crn-form" id="crn-form-form-Posto">
   <div class="form" ng-show="Posto.editing || Posto.inserting">
-    <form crn-datasource="Posto">
+    <form crn-datasource="Posto" class="">
       <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
         <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
         <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
@@ -187,40 +110,54 @@
         <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
         <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
       </div>
-      <br>
+      <br/>
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
         <div data-component="crn-textinput" id="crn-textinput-nome">
           <div class="form-group">
-            <label for="textinput-nome">Nome</label>
-            <input type="text" ng-model="Posto.active.nome" class="form-control" id="textinput-nome" placeholder="Ex: SP" required="" max="50" title="Campo obrigatório com no máximo 50 caracteres">
+            <label for="textinput-nome" class="">Nome</label>
+            <input
+              type="text"
+              ng-model="Posto.active.nome"
+              class="form-control"
+              id="textinput-nome"
+              maxlength="50"
+              placeholder="Ex: SP"
+              required=""
+              title="Por favor, insira o nome."
+              >
           </div>
         </div>
-        
-        <!-- NtoN  -->
-        <!-- NtoN  end-->
-      </fieldset><div class="component-holder ng-binding ng-scope" data-component="crn-viacep" data-attribute-preview="" id="crn-viacep-398933"><div ng-controller="CtrlViaCep">
-     <div data-container="true" id="starter">
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+       
+       
+       </fieldset><div class="component-holder ng-binding ng-scope" data-component="crn-viacep" data-attribute-preview="" id="crn-viacep-398933"><div ng-controller="CtrlViaCep">
+         <div data-container="true" id="starter">
+            <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
             <div class="form-group">
                 <label for="exampleInputEmail1">CEP</label>
                 <input type="text" ng-change="viacep()" name="cep" required="" ng-model="address.cep" class="form-control" id="textinput-cep" placeholder="Digite o CEP">
             </div>
         </div>
-    
-
-
-
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+       
+         <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
             <div class="form-group">
                 <label for="exampleInputEmail1">Logradouro</label>
                 <input type="text" name="logradouro" required="" ng-model="address.logradouro" via-cep="logradouro" disabled="" class="form-control" id="textinput-logradouro">
             </div>
         </div>
-   
-
-
-  
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
+        
+        
+        <div data-component="crn-textinput" id="crn-textinput-numero">
+          <div class="form-group">
+            <label for="textinput-numero" class="">Numero</label>
+            <input
+              type="text"
+              ng-model="Posto.active.numero"
+              class="form-control"
+              id="textinput-numero"
+              placeholder="Numero"
+              >
+          </div>
+       <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
             <div class="form-group">
                 <label for="exampleInputEmail1">Bairro</label>
                 <input type="text" name="bairro" required="" ng-model="address.bairro" disabled="" class="form-control" id="textinput-bairro">
@@ -249,6 +186,9 @@
     </div>
 </div>  
 </div>
+        <!-- NtoN  -->
+        <!-- NtoN  end-->
+      </fieldset>
     </form>
     <form>
         <fieldset>

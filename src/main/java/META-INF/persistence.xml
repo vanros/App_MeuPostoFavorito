@@ -3,13 +3,13 @@
     <persistence-unit name="app" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>java:comp/env/jdbc/MeuPostoFavorito</jta-data-source>
+        <class>app.entity.Posto</class>
         <class>app.entity.Carro</class>
         <class>app.entity.UserRole</class>
         <class>app.entity.Abastecimento</class>
         <class>app.entity.User</class>
         <class>app.entity.Comentario</class>
         <class>app.entity.Role</class>
-        <class>app.entity.Posto</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://rds-oncronos-shared.cx8gelec2ybx.us-east-1.rds.amazonaws.com:3306/95b67a11-2f34-4795-afb0-cf9d66697773"/>
