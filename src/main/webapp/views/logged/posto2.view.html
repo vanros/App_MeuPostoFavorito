@@ -26,9 +26,6 @@
           <th>
             <div>Logradouro</div>
           </th>
-         <th>
-            <div>Numero</div>
-          </th>
           <th>
             <div>Bairro</div>
           </th>
@@ -39,7 +36,7 @@
             <div>Cidade</div>
           </th>
           
-         <th>
+                     <th>
             <div>
               Comentários
             </div>
@@ -64,11 +61,6 @@
               {{rowData.logradouro}}
             </div>
           </td>
-           <td>
-            <div>
-              {{rowData.numero}}
-            </div>
-            </td>
           <td>
             <div>
               {{rowData.bairro}}
@@ -127,12 +119,21 @@
                     </div>
                   </div>
               <div data-component="crn-datasource" class="component-holder">
-                    <datasource name="userGridForUiSelect" entity="api/security/User/{{User.active.id}}/Comentario" keys="id" rows-per-page="100" ></datasource>
+                    <datasource name="userGridForUiSelect" entity="api/security/User" keys="id" rows-per-page="100" ></datasource>
                   </div>
                   <div data-component="crn-combobox" id="crn-combobox-ComentarioGrid.active.user">
                     <div class="form-group">
-                      <label for="combobox-user" class="" ng-model="ComentarioGrid.active.user" ng-value="{{session.user.email}}">Comentário de : {{session.user.email}}</label>
-                      <input  ng-model="ComentarioGrid.active.user.email" ng-value="{{session.user.email}}">
+                      <label for="combobox-user" class="">Users</label>
+                      <ui-select ng-model="ComentarioGrid.active.user" crn-datasource="userGridForUiSelect" class="crn-select" id="combobox-user" required="required" >
+                        <ui-select-match class="">
+                          {{$select.selected.email}}
+                        </ui-select-match>
+                        <ui-select-choices repeat="rowData in datasource.data | filter : session.user.email" class="">
+                          <div class="" data-container="true">
+                            {{rowData.email}}
+                          </div>
+                        </ui-select-choices>
+                      </ui-select>
                     </div>
                   </div>
                 </div>
