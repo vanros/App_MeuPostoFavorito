@@ -141,4 +141,10 @@ public class CarroREST {
   public HttpEntity<PagedResources<Carro>> findCarrosByUser(@PathVariable("userId") java.lang.String userId, Pageable pageable, PagedResourcesAssembler assembler) {
     return new ResponseEntity<>(assembler.toResource(carroBusiness.findCarrosByUser(userId, pageable)), HttpStatus.OK);
   }
+  
+    
+   @RequestMapping(method = RequestMethod.GET, value="/{carroId}/ConsumoMedio")    
+  public HttpEntity<PagedResources<CarroVO>> findConsumoMedio(@PathVariable("carroId") java.lang.String carroId, Pageable pageable, PagedResourcesAssembler assembler) {
+     return new ResponseEntity<>(assembler.toResource(carroBusiness.findConsumoMedio(carroId, pageable)), HttpStatus.OK);
+   }
 }

@@ -29,6 +29,9 @@
             <div>Logradouro</div>
           </th>
           <th>
+            <div>Numero</div>
+          </th>
+          <th>
             <div>Bairro</div>
           </th>
           <th>
@@ -65,6 +68,11 @@
               {{rowData.logradouro}}
             </div>
           </td>
+          <td>
+            <div>
+              {{rowData.numero}}
+            </div>
+            </td>
           <td>
             <div>
               {{rowData.bairro}}
@@ -216,6 +224,18 @@
                 <input type="text" name="logradouro" required="" ng-model="address.logradouro" via-cep="logradouro" disabled="" class="form-control" id="textinput-logradouro">
             </div>
         </div>
+        
+        <div data-component="crn-textinput" id="crn-textinput-numero">
+          <div class="form-group">
+            <label for="textinput-numero" class="">Numero</label>
+            <input
+              type="text"
+              ng-model="Posto.active.numero"
+              class="form-control"
+              id="textinput-numero"
+              placeholder="Ex: 10"
+              >
+          </div>
    
 
 
