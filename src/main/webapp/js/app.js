@@ -103,7 +103,7 @@ var app = (function() {
         })
         
         .state('consumoMedio', {
-          url: "/consumoMedio",
+          url: "/home/logged/consumoMedio",
           controller: 'HomeController',
           templateUrl: 'views/logged/consumoMedio.view.html'
         })

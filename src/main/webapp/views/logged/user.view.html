@@ -104,70 +104,40 @@
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
         <div data-component="crn-textinput" id="crn-textinput-email">
           <div class="form-group">
-            <label for="textinput-email" class="">Email</label>
-            <input
-              type="text"
-              ng-model="User.active.email"
-              class="form-control"
-              id="textinput-email"
-              placeholder="email"
-              >
-          </div>
-        </div>
-        <div data-component="crn-textinput" id="crn-textinput-name">
-          <div class="form-group">
-            <label for="textinput-name" class="">Name</label>
-            <input
-              type="text"
-              ng-model="User.active.name"
-              class="form-control"
-              id="textinput-name"
-              placeholder="name"
-              required="required">
-          </div>
-        </div>
-        <div data-component="crn-textinput" id="crn-textinput-login">
-          <div class="form-group">
-            <label for="textinput-login" class="">Login</label>
-            <input
-              type="text"
-              ng-model="User.active.login"
-              class="form-control"
-              id="textinput-login"
-              placeholder="login"
-              required="required">
-          </div>
-        </div>
-        <div data-component="crn-textinput" id="crn-textinput-picture">
-          <div class="form-group">
-            <label for="textinput-picture" class="">Picture</label>
-            <div class="form-group upload-image-component" ngf-drop ngf-drag-over-class="dragover">
-              <img style="max-height: 128px; max-width: 128px;"
-                ng-if="datasource.active.picture"
-                data-ng-src="{{'data:image/png;base64,' + datasource.active.picture}}">
-              <img data-ng-src="{{datasource.noImageUpload}}"
-                style="max-height: 128px; max-width: 128px;"
-                class="btn"
-                ng-if="!datasource.active.picture"
-                ngf-drop ngf-select ngf-change="datasource.setFile($file, datasource.active, 'picture')" accept="image/*">
-              <div class="remove btn btn-danger btn-xs" ng-if="datasource.active.picture" ng-click="datasource.active.picture=null">
-                <span class="glyphicon glyphicon-remove"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div data-component="crn-textinput" id="crn-textinput-password">
-          <div class="form-group">
-            <label for="textinput-password" class="">Password</label>
-            <input
-              type="password"
-              ng-model="User.active.password"
-              class="form-control"
-              id="textinput-password"
-              placeholder="password"
-              required="required">
-          </div>
-        </div>
+             <label for="textinput-email">Email</label> 
+            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required="" title="Escreva um email com no máximo 50 caracteres"  placeholder="Ex: maria@email.com" type="email"> 
+          </div> 
+        </div> 
+        <div data-component="crn-textinput" id="crn-textinput-name"> 
+          <div class="form-group"> 
+            <label for="textinput-name">Name</label> 
+            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}"  title="Escreva um nome com no máximo 50 caracteres"   placeholder="Ex: Maria da Silva" required type="text"> 
+          </div> 
+        </div> 
+        <div data-component="crn-textinput" id="crn-textinput-login"> 
+          <div class="form-group"> 
+            <label for="textinput-login">Login</label> 
+            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="Ex: maria"  pattern=".{1,50}"  title="Escreva um login com no máximo 50 caracteres"  required type="text"> 
+          </div> 
+        </div> 
+        <div data-component="crn-textinput" id="crn-textinput-picture"> 
+          <div class="form-group"> 
+            <label for="textinput-picture">Picture</label> 
+            <div class="form-group upload-image-component" ngf-drop="" ngf-drag-over-class="dragover"> 
+              <img style="max-height: 128px; max-width: 128px;" ng-if="datasource.active.picture" data-ng-src="{{'data:image/png;base64,' + datasource.active.picture}}"> 
+              <img data-ng-src="{{datasource.noImageUpload}}" style="max-height: 128px; max-width: 128px;" class="btn" ng-if="!datasource.active.picture" ngf-drop="" ngf-select="" ngf-change="datasource.setFile($file, datasource.active, 'picture')" accept="image/*"> 
+              <div class="remove btn btn-danger btn-xs" ng-if="datasource.active.picture" ng-click="datasource.active.picture=null"> 
+                <span class="glyphicon glyphicon-remove"></span> 
+              </div> 
+            </div> 
+          </div> 
+        </div> 
+        <div data-component="crn-textinput" id="crn-textinput-password"> 
+          <div class="form-group"> 
+            <label for="textinput-password">Password</label> 
+            <input ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="Insira a senha" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%<>'()*+,-./:;?@[\\\]_`{|}~]).{8,}" title="Desculpe, sua senha de conter  pelo menos 8 caracteres, contendo nela: letras maiúsculas e minúsculas, números, caracteres especiais"> 
+          </div> 
+        </div> 
         <!-- NtoN  -->
         <!-- NtoN  end-->
       </fieldset>

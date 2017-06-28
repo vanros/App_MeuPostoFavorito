@@ -135,19 +135,19 @@
         <div data-component="crn-textinput" id="crn-textinput-email"> 
           <div class="form-group"> 
             <label for="textinput-email">Email</label> 
-            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required="" title="Escreva um email com no máximo 50 caracteres"  placeholder="email" type="email"> 
+            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required="" title="Escreva um email com no máximo 50 caracteres"  placeholder="Ex: maria@email.com" type="email"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-name"> 
           <div class="form-group"> 
             <label for="textinput-name">Name</label> 
-            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}"  title="Escreva um nome com no máximo 50 caracteres"   placeholder="name" required type="text"> 
+            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}"  title="Escreva um nome com no máximo 50 caracteres"   placeholder="Ex: Maria da Silva" required type="text"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-login"> 
           <div class="form-group"> 
             <label for="textinput-login">Login</label> 
-            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="login"  pattern=".{1,50}"  title="Escreva um login com no máximo 50 caracteres"  required type="text"> 
+            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="Ex: maria"  pattern=".{1,50}"  title="Escreva um login com no máximo 50 caracteres"  required type="text"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-picture"> 
@@ -165,7 +165,7 @@
         <div data-component="crn-textinput" id="crn-textinput-password"> 
           <div class="form-group"> 
             <label for="textinput-password">Password</label> 
-            <input ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="password" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%<>'()*+,-./:;?@[\\\]_`{|}~]).{8,}" title="Desculpe, sua senha de conter  pelo menos 8 caracteres, contendo nela: letras maiúsculas e minúsculas, números, caracteres especiais"> 
+            <input ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="Insira a senha" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%<>'()*+,-./:;?@[\\\]_`{|}~]).{8,}" title="Desculpe, sua senha de conter  pelo menos 8 caracteres, contendo nela: letras maiúsculas e minúsculas, números, caracteres especiais"> 
           </div> 
         </div> 
  <div class="active-bar" ng-hide="!datasource.inserting" style="margin-top:10px;"> 

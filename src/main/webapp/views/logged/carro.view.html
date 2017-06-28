@@ -67,39 +67,10 @@
     </div>
     
      <div>
-    <button class="btn btn-success" id="btnMostrarEsconder" ><i class="glyphicon glyphicon-list-alt"></i> <span class="">Ver Consumo Médio</span> </button>
+    <button class="btn btn-success" id="btnConsumo" ng-click="redirectConsumoMedio()" ><i class="glyphicon glyphicon-list-alt"></i> <span class="">Ver Consumo Médio</span> </button>
     
     <button class="btn btn-success" id="btnCampeoes" ng-click="redirectCarrosCampeoes()"><i class="glyphicon glyphicon-list-alt"></i> <span class="">Ver Carros Campeões de Rentabilidade</span> </button>
     
-     <div id="divConteudo">
-        <div data-container="true" id="starter"><div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-966654"><datasource name="Carro" entity="api/rest/Carro" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" filter=""></datasource></div><div class="component-holder ng-binding ng-scope" data-component="crn-datasource" data-attribute-preview="" id="crn-datasource-634701"><datasource name="ConsumoMedio" entity="api/rest/Carro" keys="id" rows-per-page="100" on-before-create="" on-after-create="" on-before-update="" on-after-update="" on-before-delete="" on-after-delete="" on-after-fill="" filter="/{{Carro.active.id}}/ConsumoMedio" dependent-by="{{Carro}}"></datasource></div><div class="component-holder ng-binding ng-scope" data-component="crn-combobox-dynamic" data-attribute-preview="" id="crn-combobox-dynamic-596773"><div class="form-group">
-            <label for="">Selecione o Carro</label>
-             <ui-select crn-datasource="Carro" ng-model="datasource.active" ng-disabled="disabled" theme="bootstrap" class="crn-select">
-                <ui-select-match placeholder="Select...">{{$select.selected.placa}}</ui-select-match>
-            <ui-select-choices repeat="rowData as rowData in datasource.data | filter : $select.search" refresh="" refresh-deplay="">
-                <div data-container="true">{{rowData.placa}}</div>
-            </ui-select-choices>
-         </ui-select>
-            </div></div><div class="component-holder ng-binding ng-scope" data-component="crn-grid" data-attribute-preview="" id="crn-grid-609622"><div crn-datasource="ConsumoMedio">
-          <table class="table  table-bordered table-hover">
-            <thead>
-             <tr class="table-header">
-               <th class="active"><div data-container="true">Consumo Médio</div></th>
-        
-        </tr>
-         </thead>
-      <tbody><tr class="table-content" ng-repeat="rowData in datasource.data">
-        <td class="active"><div data-container="true">{{rowData.mediaConsumoCarro}}</div></td>
-        
-        
-      </tr>
-    </tbody>
-  </table>
-  <div class="table-footer-controls">
-    <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">Load more...</button>
-  </div>
-</div></div></div>
-</div>
     </div>
   </div>
 </div>

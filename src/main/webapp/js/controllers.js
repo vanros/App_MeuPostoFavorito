@@ -104,6 +104,10 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
          $scope.redirectCarrosCampeoes = function() {
             $state.go("mediaRentabilidadeCarro");
   };
+  
+         $scope.redirectConsumoMedio = function() {
+            $state.go("consumoMedio");
+  };
         
          $scope.redirectComentarios = function() {
             $state.go("comentarios");
