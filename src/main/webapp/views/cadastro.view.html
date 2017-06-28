@@ -135,19 +135,19 @@
         <div data-component="crn-textinput" id="crn-textinput-email"> 
           <div class="form-group"> 
             <label for="textinput-email">Email</label> 
-            <input ng-model="User.active.email" class="form-control" id="textinput-email" placeholder="email" type="text"> 
+            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required="" title="Escreva um email com no máximo 50 caracteres"  placeholder="email" type="email"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-name"> 
           <div class="form-group"> 
             <label for="textinput-name">Name</label> 
-            <input ng-model="User.active.name" class="form-control" id="textinput-name" placeholder="name" required type="text"> 
+            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}"  title="Escreva um nome com no máximo 50 caracteres"   placeholder="name" required type="text"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-login"> 
           <div class="form-group"> 
             <label for="textinput-login">Login</label> 
-            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="login" required type="text"> 
+            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="login"  pattern=".{1,50}"  title="Escreva um login com no máximo 50 caracteres"  required type="text"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-picture"> 
