@@ -1,14 +1,4 @@
 <h3>Abastecimento</h3>
-
-<script src="//raw.github.com/plentz/jquery-maskmoney/master/jquery.maskMoney.js" type="text/javascript"></script>
-<script> 
-  $(document).ready(function(){
-
-     $("#textinput-precoPorLitro").maskMoney();
-
-});
-</script> 
-
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
   <datasource filter="" name="Abastecimento" entity="api/rest/Abastecimento" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
 </div>
@@ -158,7 +148,9 @@
         <div data-component="crn-textinput" id="crn-textinput-precoPorLitro">
           <div class="form-group">
             <label for="textinput-precoPorLitro">Preco Por Litro</label>
-           <input type="text"  ng-model="Abastecimento.active.precoPorLitro" class="form-control" id="textinput-precoPorLitro" placeholder="Ex: R$ 3,99" required="" title="Por favor, insira o preço">
+           <input type="text" name="price" ng-model="model" class="form-control" id="textinput-precoPorLitro" placeholder="Ex: R$ 3,99" 
+           required="" money-mask money-mask-prepend="R$" title="Por favor, insira o preço"
+           >
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
