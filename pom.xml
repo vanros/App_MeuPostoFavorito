@@ -16,9 +16,6 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/java</directory>
-            </resource>
-            <resource>
                 <directory>src/test/java</directory>
                 <includes>
                     <include>**</include>
@@ -26,6 +23,9 @@
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
             </resource>
         </resources>
         <plugins>
@@ -35,12 +35,12 @@
                 <version>1.1.3</version>
                 <configuration>
                     <target>https://api.oncronos.io</target>
-                    <org>pedro.lima@techne.com.br</org>
+                    <org>vanessarodrigues.vj@gmail.com</org>
                     <space>develop</space>
                     <appname>meupostofavorito</appname>
                     <url>meupostofavoritoteste.oncronos.io</url>
                     <instances>1</instances>
-                    <memory>160</memory>
+                    <memory>2048</memory>
                     <username/>
                     <password/>
                 </configuration>
@@ -179,10 +179,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.cronospass.resource mimetype="folder/web">src/main/webapp</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/servercontext">config</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/src">src/main/java</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/libs">lib</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/src">src/test/java</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/src">src/main/java</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/web">src/main/webapp</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/libs">lib</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/servercontext">config</project.cronospass.resource>
     </properties>
 </project>

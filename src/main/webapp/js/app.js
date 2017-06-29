@@ -117,7 +117,7 @@ var app = (function() {
         })
          .state('comentarios', {
           url: "home/logged/comentarios",
-          controller: 'PageController',
+          controller: 'ComentariosController',
           templateUrl: 'views/logged/comentarios.view.html'
         })
 
