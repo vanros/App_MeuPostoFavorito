@@ -116,7 +116,7 @@
      <div data-component="crn-datasource" id="crn-datasource-763277"> 
       <datasource name="User" entity="/api/security/User" keys="id" rows-per-page="10" delete-message="Deseja remover?"></datasource> 
     </div> 
-   <div align="center" style="margin-top:50px;" ng-hide="User.active=null"> 
+   <div align="center" style="margin-top:50px;" ng-init="User.active=null"> 
       <button class="btn btn-sucess" ng-click="User.startInserting()"><i class="glyphicon glyphicon-ok"></i> Iniciar cadastro</button> 
   
     </div>
@@ -133,24 +133,25 @@
         <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
         <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
       </div>--> 
+     
       <br> 
       <fieldset ng-disabled="!datasource.inserting"> 
         <div data-component="crn-textinput" id="crn-textinput-email"> 
           <div class="form-group"> 
             <label for="textinput-email">Email</label> 
-            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required title="Escreva um email com no máximo 50 caracteres" placeholder="email" type="email"> 
+            <input ng-model="User.active.email" class="form-control" id="textinput-email" pattern=".{1,50}" required="" title="Escreva um email com no máximo 50 caracteres"  placeholder="Ex: maria@email.com" type="email"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-name"> 
           <div class="form-group"> 
             <label for="textinput-name">Name</label> 
-            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}" title="Escreva um nome com no máximo 50 caracteres" placeholder="name" required type="text"> 
+            <input ng-model="User.active.name" class="form-control" id="textinput-name" pattern=".{1,50}"  title="Escreva um nome com no máximo 50 caracteres"   placeholder="Ex: Maria da Silva" required type="text"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-login"> 
           <div class="form-group"> 
             <label for="textinput-login">Login</label> 
-            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="login" pattern=".{1,50}" title="Escreva um login com no máximo 50 caracteres" required type="text"> 
+            <input ng-model="User.active.login" class="form-control" id="textinput-login" placeholder="Ex: maria"  pattern=".{1,50}"  title="Escreva um login com no máximo 50 caracteres"  required type="text"> 
           </div> 
         </div> 
         <div data-component="crn-textinput" id="crn-textinput-picture"> 
@@ -168,14 +169,15 @@
         <div data-component="crn-textinput" id="crn-textinput-password"> 
           <div class="form-group"> 
             <label for="textinput-password">Password</label> 
-            <input ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="password" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%<>'()*+,-./:;?@[\\\]_`{|}~]).{8,}" title="Desculpe, sua senha de conter  pelo menos 8 caracteres, contendo nela: letras maiúsculas e minúsculas, números, caracteres especiais"> 
+            <input ng-model="User.active.password" class="form-control" id="textinput-password" placeholder="Insira a senha" required type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%<>'()*+,-./:;?@[\\\]_`{|}~]).{8,}" title="Desculpe, sua senha de conter  pelo menos 8 caracteres, contendo nela: letras maiúsculas e minúsculas, números, caracteres especiais"> 
           </div> 
         </div> 
-        <div class="active-bar" ng-hide="!datasource.inserting" style="margin-top:10px;"> 
-          <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i> Confirmar </button> 
-          <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i> Cancelar </button> 
-        </div> 
+ <div class="active-bar" ng-hide="!datasource.inserting" style="margin-top:10px;"> 
+        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i> Confirmar </button> 
+        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i> Cancelar </button> 
+      </div> 
       </fieldset> 
     </form> 
+    
   </div> 
 </div>

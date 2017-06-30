@@ -50,9 +50,20 @@
 
 
 app.controller('CadastroController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
+  function General($scope, $element, $http, $filter)  
+  {  
+   $scope.data = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss');  
+  }  
+  
+}]);
+
+app.controller('ComentariosController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
 
   
 }]);
+
+
+
 
 app.controller('CepController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
 
@@ -103,6 +114,10 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
         
          $scope.redirectCarrosCampeoes = function() {
             $state.go("mediaRentabilidadeCarro");
+  };
+  
+         $scope.redirectConsumoMedio = function() {
+            $state.go("consumoMedio");
   };
         
          $scope.redirectComentarios = function() {

@@ -103,7 +103,7 @@ var app = (function() {
         })
         
         .state('consumoMedio', {
-          url: "/consumoMedio",
+          url: "/home/logged/consumoMedio",
           controller: 'HomeController',
           templateUrl: 'views/logged/consumoMedio.view.html'
         })
@@ -117,7 +117,7 @@ var app = (function() {
         })
          .state('comentarios', {
           url: "home/logged/comentarios",
-          controller: 'PageController',
+          controller: 'ComentariosController',
           templateUrl: 'views/logged/comentarios.view.html'
         })
 
