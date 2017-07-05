@@ -156,7 +156,7 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
           });
           if ($rootScope.session.token) $scope.refreshToken();
         } else {
-          $state.go("login");
+          $state.go("'livreAcesso");
           sessionStorage.removeItem("_u");
         }
         
@@ -166,7 +166,7 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
             // save the user data on localStorage
             sessionStorage.removeItem("_u");
           }
-          $state.go("login");
+          $state.go("livreAcesso");
         };
         
         $scope.changePassword = function () {
