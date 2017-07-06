@@ -123,7 +123,7 @@ public class CarroBusiness {
      return result;    
    }
    
-  public Page<CarroVO> findConsumoMedio(java.lang.String id, Pageable pageable) {
+  public Page<CarroVO> findConsumoMedio(java.lang.String id, Pageable pageable){
      // begin-user-code
      // end-user-code 
      List<Abastecimento> abastecimentosDeUmCarro;
@@ -151,7 +151,7 @@ public class CarroBusiness {
       listaMediaConsumo.add(carroVO);
       
      final Page<CarroVO> retorno = new PageImpl<>(listaMediaConsumo);
-   
+    
      return retorno;
       
    }

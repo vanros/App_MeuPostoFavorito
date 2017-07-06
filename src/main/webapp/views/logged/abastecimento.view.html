@@ -43,7 +43,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="table-content" ng-repeat="rowData in datasource.data">
+        <tr class="table-content" ng-repeat="rowData in datasource.data | filter : session.user.email">
           <td class="">
             <div class="">
               {{rowData.id}}
@@ -182,6 +182,7 @@
               id="textinput-precoPorLitro"
               placeholder="Ex: 3.99"
               required="true"
+              ui-money-mask
               oninvalid="setCustomValidity('Por favor, insira o preço por litro.')" onchange="try{setCustomValidity('')}catch(e){}"
               >
           </div>
@@ -196,7 +197,7 @@
               <ui-select-match class="">
                 {{$select.selected.email}}
               </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
+              <ui-select-choices  repeat="rowData in datasource.data | filter : session.user.email" class="">
                 <div class="" data-container="true">
                   {{rowData.email}}
                 </div>
@@ -232,7 +233,7 @@
               <ui-select-match class="">
                 {{$select.selected.marca}}  {{$select.selected.modelo}}
               </ui-select-match>
-              <ui-select-choices  repeat="rowData in datasource.data | filter : $select.search" class="">
+              <ui-select-choices  repeat="rowData in datasource.data | filter : session.user.email" class="">
                 <div class="" data-container="true">
                   {{rowData.marca}}  {{$select.selected.modelo}}
                 </div>

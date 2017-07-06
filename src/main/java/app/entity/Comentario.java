@@ -31,7 +31,7 @@ public class Comentario implements Serializable {
   * @generated
   */
   @Temporal(TemporalType.TIMESTAMP)
-  @Column(name = "data", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "data", nullable = true, unique = false, insertable=false, updatable=true)
   private java.util.Date data;
   
   /**

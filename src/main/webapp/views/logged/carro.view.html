@@ -1,16 +1,4 @@
 <h3>Carro</h3>
-
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function (e) {
-        $("#divConteudo").hide();
-
-        $("#btnMostrarEsconder").click(function (e) {
-            $("#divConteudo").toggle();
-        });
-    });
-</script>
-
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
   <datasource filter="" name="Carro" entity="api/rest/Carro" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
 </div>
@@ -23,10 +11,16 @@
       <thead>
         <tr class="table-header">
           <th>
-            <div>Marca </div>
+            <div>Marca</div>
           </th>
           <th>
             <div>Modelo</div>
+          </th>
+          <th>
+            <div>Ano</div>
+          </th>
+          <th>
+            <div>User</div>
           </th>
           <th>
             <div>Placa</div>
@@ -37,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="table-content" ng-repeat="rowData in datasource.data">
+        <tr class="table-content" ng-repeat="rowData in datasource.data | filter : session.user.email">
           <td>
             <div>
               {{rowData.marca}}
@@ -46,6 +40,16 @@
           <td>
             <div>
               {{rowData.modelo}}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{rowData.ano}}
+            </div>
+          </td>
+          <td>
+            <div>
+              {{rowData.user.email}}
             </div>
           </td>
           <td>
@@ -74,7 +78,6 @@
     </div>
   </div>
 </div>
-
 <div data-component="crn-form" id="crn-form-form-Carro">
   <div class="form" ng-show="Carro.editing || Carro.inserting">
     <form crn-datasource="Carro">
@@ -100,20 +103,13 @@
         <div data-component="crn-textinput" id="crn-textinput-modelo">
           <div class="form-group">
             <label for="textinput-modelo">Modelo</label>
-            <input ng-model="Carro.active.modelo" class="form-control" pattern=".{1,50}" required="" title="Escreva um modelo com no máximo 50 caracteres" id="textinput-modelo" placeholder="Modelo com tamanho máximo de 50 letras" type="text">
+            <input type="text" ng-model="Carro.active.modelo" class="form-control" pattern=".{1,50}" required="" title="Escreva um modelo com no máximo 50 caracteres" id="textinput-modelo" placeholder="Modelo com tamanho máximo de 50 letras">
           </div>
         </div>
         <div data-component="crn-textinput" id="crn-textinput-ano">
           <div class="form-group">
             <label for="textinput-ano">Ano</label>
-            <input ng-model="Carro.active.ano"
-            class="form-control" min="1900"
-            max="2018"
-            pattern="[0-9]{4}"
-            required="" 
-            title ="Escreva um ano válido" 
-            id="textinput-ano" placeholder="Insira um ano entre 1900 e 2018" 
-            type="number">
+            <input ng-model="Carro.active.ano" class="form-control" min="1900" max="2018" pattern="[0-9]{4}" required="" title="Escreva um ano válido" id="textinput-ano" placeholder="Insira um ano entre 1900 e 2018" type="number">
           </div>
         </div>
         <div data-component="crn-datasource" class="component-holder">
@@ -126,7 +122,7 @@
               <ui-select-match>
                 {{$select.selected.email}}
               </ui-select-match>
-              <ui-select-choices repeat="rowData in datasource.data | filter : $select.search">
+              <ui-select-choices repeat="rowData in datasource.data | filter : session.user.email">
                 <div data-container="true">
                   {{rowData.email}}
                 </div>
@@ -151,7 +147,5 @@
         
         </fieldset>
     </form>
-   
-    
   </div>
 </div>

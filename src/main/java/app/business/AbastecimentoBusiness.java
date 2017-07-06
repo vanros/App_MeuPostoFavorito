@@ -207,7 +207,8 @@ public class AbastecimentoBusiness {
 		return retorno;
 	}
 	
-	public Page<CarroVO2> listaRankingCarro(Pageable pageable) {
+	public Page<CarroVO2> listaRankingCarro(Pageable pageable){
+	  
     List<String> marcas = repository.recuperaMarcasQueTemAbastecimento();
     Double acm = 0.0;
     Double mediaRentabilidade = 0.0;
@@ -273,8 +274,11 @@ public class AbastecimentoBusiness {
 		});
 
 		final Page<CarroVO2> retorno = new PageImpl<>(listaCarrosCampeoes);
-
-		return retorno;
+		
+    return retorno;
+    
+  
+		
     
   }
 	

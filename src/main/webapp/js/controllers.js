@@ -58,7 +58,15 @@ app.controller('CadastroController', ['$scope', '$http', '$rootScope', '$state',
 }]);
 
 app.controller('ComentariosController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
-
+  
+  $scope.dataHora = function(){
+   var currentDate = new Date()
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1;
+    var year = currentDate.getFullYear();
+    var my_date = month+"-"+day+"-"+year;
+    document.getElementById("textinput-data").value=my_date; 
+  }
   
 }]);
 
@@ -156,7 +164,7 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
           });
           if ($rootScope.session.token) $scope.refreshToken();
         } else {
-          $state.go("login");
+          $state.go("'livreAcesso");
           sessionStorage.removeItem("_u");
         }
         
@@ -166,7 +174,7 @@ app.controller('LivreAcessoController', ['$scope', '$http', '$rootScope', '$stat
             // save the user data on localStorage
             sessionStorage.removeItem("_u");
           }
-          $state.go("login");
+          $state.go("livreAcesso");
         };
         
         $scope.changePassword = function () {

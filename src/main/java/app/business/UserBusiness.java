@@ -55,9 +55,16 @@ public class UserBusiness {
     entity.setPassword(encryptionPassword);      
     User result = null;
     byte[] picture = entity.getPicture();
-    result = repository.save(entity);
+     try {
+       result = repository.save(entity);
+
+     }catch(Exception e) {
+        throw new Exception("Erro no cadastro, usuário já existente.");
+    }  
+    
     result.setPicture(picture);
-    this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload();    // begin-user-code
+    this.cloudManager.byEntity(result).build().dropbox(DROPBOX_APP_ACCESS_TOKEN).upload(); 
+       // begin-user-code
     // end-user-code
     return result;
   }

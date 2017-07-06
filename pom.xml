@@ -34,13 +34,13 @@
                 <artifactId>cf-maven-plugin</artifactId>
                 <version>1.1.3</version>
                 <configuration>
-                    <target>https://api.oncronos.io</target>
-                    <org>vanessarodrigues.vj@gmail.com</org>
+                    <target>https://api.cronapp.io</target>
+                    <org>vanessa.silva@techne.com.br</org>
                     <space>develop</space>
                     <appname>meupostofavorito</appname>
-                    <url>meupostofavoritoteste.oncronos.io</url>
+                    <url>meupostofavorito.cronapp.io</url>
                     <instances>1</instances>
-                    <memory>2048</memory>
+                    <memory>1024</memory>
                     <username/>
                     <password/>
                 </configuration>
@@ -179,10 +179,10 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.cronospass.resource mimetype="folder/src">src/test/java</project.cronospass.resource>
-        <project.cronospass.resource mimetype="folder/src">src/main/java</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/web">src/main/webapp</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/src">src/test/java</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/libs">lib</project.cronospass.resource>
+        <project.cronospass.resource mimetype="folder/src">src/main/java</project.cronospass.resource>
         <project.cronospass.resource mimetype="folder/servercontext">config</project.cronospass.resource>
     </properties>
 </project>
