@@ -15,7 +15,7 @@ var app = (function() {
       'tmh.dynamicLocale',
       'ui-notification',
       'ui.bootstrap',
-      'ui.utils.masks',
+      'ui.utils.masks', 
       'ngFileUpload'
     ])
 

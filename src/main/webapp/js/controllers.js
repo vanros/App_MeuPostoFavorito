@@ -59,14 +59,12 @@ app.controller('CadastroController', ['$scope', '$http', '$rootScope', '$state',
 
 app.controller('ComentariosController', ['$scope', '$http', '$rootScope', '$state', '$translate', 'Notification', function ($scope, $http, $rootScope, $state, $translate, Notification) {
   
-  $scope.dataHora = function(){
-   var currentDate = new Date()
-    var day = currentDate.getDate();
-    var month = currentDate.getMonth() + 1;
-    var year = currentDate.getFullYear();
-    var my_date = month+"-"+day+"-"+year;
-    document.getElementById("textinput-data").value=my_date; 
+  $scope.dataHora = function() {
+    
+    Comentario.active.data = new Date();
+  
   }
+  
   
 }]);
 

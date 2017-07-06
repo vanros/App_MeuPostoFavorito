@@ -141,11 +141,17 @@ public class CarroBusiness {
     
     abastecimentosDeUmCarro = result.getContent();
     
+    
     for(Abastecimento abastecimento: abastecimentosDeUmCarro){
          acm = acm + (abastecimento.getQuilometragemRodada()/abastecimento.getLitros());
      }
      
-     mediaConsumo = acm/abastecimentosDeUmCarro.size(); 
+      if(abastecimentosDeUmCarro.size() == 0){
+        mediaConsumo= 0.0;
+      }else{
+        mediaConsumo = acm/abastecimentosDeUmCarro.size(); 
+      }  
+      
      
       carroVO = new CarroVO(mediaConsumo, carro.getPlaca());
       listaMediaConsumo.add(carroVO);
