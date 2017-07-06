@@ -11,9 +11,7 @@
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
   <datasource filter="?nome={{nome}}" name="Posto" entity="api/rest/Posto/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
 </div>
-<div data-component="crn-button" id="crn-button-564202">
-  <button class="btn btn-primary" type="submit" onclick="" ng-click="Posto.startInserting()" ng-hide="Posto.inserting || Posto.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
-</div>
+
 <div class="component-holder" data-component="crn-grid" id="crn-grid-Posto">
   <div crn-datasource="Posto" ng-hide="Posto.editing || Posto.inserting">
     <table class="table  table-bordered table-hover table-striped">
@@ -29,9 +27,6 @@
             <div>Logradouro</div>
           </th>
           <th>
-            <div>Numero</div>
-          </th>
-          <th>
             <div>Bairro</div>
           </th>
           <th>
@@ -40,9 +35,7 @@
           <th>
             <div>Cidade</div>
           </th>
-          <th>
-            <div>{{"template.crud.actions" | translate}}</div>
-          </th>
+          
                      <th>
             <div>
               Comentários
@@ -70,11 +63,6 @@
           </td>
           <td>
             <div>
-              {{rowData.numero}}
-            </div>
-            </td>
-          <td>
-            <div>
               {{rowData.bairro}}
             </div>
           </td>
@@ -88,12 +76,7 @@
               {{rowData.cidade}}
             </div>
           </td>
-          <td>
-            <div>
-              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.startEditing(rowData)"><i class="fa fa-edit"></i></button>
-              <button class="btn btn-default btn-sm" type="submit" ng-click="datasource.remove(rowData)"><i class="fa fa-times"></i></button>
-            </div>
-          </td>
+          
                      <td>
             <div>
     <div data-component="crn-datasource" class="component-holder">
@@ -135,12 +118,6 @@
                       <input ng-model="ComentarioGrid.active.nota" class="form-control" id="textinput-nota" placeholder="Nota" type="number">
                     </div>
                   </div>
-                  <div data-component="crn-textinput" id="crn-textinput-moderado">
-                    <div class="form-group">
-                      <label for="textinput-moderado">Moderado</label>
-                      <input ng-model="ComentarioGrid.active.moderado" id="textinput-moderado" placeholder="Moderado" type="checkbox">
-                    </div>
-                  </div>
               <div data-component="crn-datasource" class="component-holder">
                     <datasource name="userGridForUiSelect" entity="api/security/User" keys="id" rows-per-page="100" ></datasource>
                   </div>
@@ -151,7 +128,7 @@
                         <ui-select-match class="">
                           {{$select.selected.email}}
                         </ui-select-match>
-                        <ui-select-choices repeat="rowData in datasource.data | filter : $select.search" class="">
+                        <ui-select-choices repeat="rowData in datasource.data | filter : session.user.email" class="">
                           <div class="" data-container="true">
                             {{rowData.email}}
                           </div>
@@ -179,103 +156,5 @@
     <div class="table-footer-controls">
       <button class="btn btn-default btn-block btn-clicked" ng-show="datasource.hasNextPage()" ng-click="datasource.nextPage()">{{"template.crud.load_more" | translate}}...</button>
     </div>
-  </div>
-</div>
-<div data-component="crn-form" id="crn-form-form-Posto">
-  <div class="form" ng-show="Posto.editing || Posto.inserting">
-    <form crn-datasource="Posto">
-      <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
-        <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
-        <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
-        <button class="btn btn-primary" ng-disabled="!datasource.hasPrevious()" ng-click="datasource.previous()"><i class="glyphicon glyphicon-chevron-left"></i></button>
-        <button class="btn btn-primary" ng-disabled="!datasource.hasNext()" ng-click="datasource.next()"><i class="glyphicon glyphicon-chevron-right"></i></button>
-        <button class="btn btn-primary" ng-click="datasource.remove()"><i class="glyphicon glyphicon-trash"></i></button>
-      </div>
-      <div class="active-bar" ng-hide="!datasource.editing &amp;&amp; !datasource.inserting">
-        <button class="btn btn-success" ng-click="datasource.post()"><i class="glyphicon glyphicon-ok"></i></button>
-        <button class="btn btn-danger" ng-click="datasource.cancel()"><i class="glyphicon glyphicon-remove"></i></button>
-      </div>
-      <br>
-      <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
-        <div data-component="crn-textinput" id="crn-textinput-nome">
-          <div class="form-group">
-            <label for="textinput-nome">Nome</label>
-            <input type="text" ng-model="Posto.active.nome" class="form-control" id="textinput-nome" placeholder="Ex: SP" required="" max="50" title="Campo obrigatório com no máximo 50 caracteres">
-          </div>
-        </div>
-        
-        <!-- NtoN  -->
-        <!-- NtoN  end-->
-      </fieldset><div class="component-holder ng-binding ng-scope" data-component="crn-viacep" data-attribute-preview="" id="crn-viacep-398933"><div ng-controller="CtrlViaCep">
-     <div data-container="true" id="starter">
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
-            <div class="form-group">
-                <label for="exampleInputEmail1">CEP</label>
-                <input type="text" ng-change="viacep()" name="cep" required="true" ng-model="address.cep" class="form-control" id="textinput-cep" title="Por favor, insira o cep." placeholder="Digite o CEP">
-            </div>
-        </div>
-    
-
-
-
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Logradouro</label>
-                <input type="text" name="logradouro" required="" ng-model="address.logradouro" via-cep="logradouro" disabled="" class="form-control" id="textinput-logradouro">
-            </div>
-        </div>
-        
-        <div data-component="crn-textinput" id="crn-textinput-numero">
-          <div class="form-group">
-            <label for="textinput-numero" class="">Numero</label>
-            <input
-              type="number"
-              ng-model="Posto.active.numero"
-              class="form-control"
-              id="textinput-numero"
-              placeholder="Ex: 10"
-              >
-          </div>
-   
-
-
-  
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Bairro</label>
-                <input type="text" name="bairro" required="" ng-model="address.bairro" disabled="" class="form-control" id="textinput-bairro">
-            </div>
-        </div>
-
-
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
-            <div class="form-group">
-                <label for="exampleInputEmail1">UF</label>
-                <input type="text" name="uf" required="" ng-model="address.uf" via-cep="uf" disabled="" class="form-control" id="textinput-uf">
-            </div>
-        </div>
-   
-
-
-   
-        <div class="component-holder ng-binding ng-scope" data-component="crn-textinput" id="crn-textinput-487708">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Cidade</label>
-                <input type="text" name="localidade" required="" ng-model="address.localidade" disabled="" class="form-control" id="textinput-cidade">
-            </div>
-        </div>
-
-
-    </div>
-</div>  
-</div>
-    </form>
-    <form>
-        <fieldset>
-            <!-- OneToN -->
-        <!-- OneToOne  end -->
-        
-        </fieldset>
-    </form>
   </div>
 </div>
