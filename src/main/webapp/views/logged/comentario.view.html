@@ -1,5 +1,17 @@
-<h3>Comentario</h3>
+<h3>Comentário</h3>
+
 <div class="row" ng-hide="Comentario.inserting || Comentario.editing">
+  <div class="col-md-2">
+    <div class="component-holder ng-binding ng-scope" data-component="crn-datepicker" id="crn-datepicker-32329">
+      <div class="form-group">
+        <div style="position:relative">
+          <input type="text" as-date="" class="form-control"
+          format="DD/MM/YYYY HH:mm:ss"
+          ng-model="data" placeholder="Data">
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="col-md-2">
     <div>
       <label for="textinput-filter" class="">{{"template.crud.search" | translate}} Texto</label>
@@ -15,7 +27,7 @@
 </div>
 <br/>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="?texto={{texto}}&moderado={{moderado}}" name="Comentario" entity="api/rest/Comentario/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
+  <datasource filter="?data={{data| date:'dd/MM/yyyy HH:mm:ss'}}&texto={{texto}}&moderado={{moderado}}" name="Comentario" entity="api/rest/Comentario/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?" class=""></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Comentario.startInserting()" ng-hide="Comentario.inserting || Comentario.editing"><i class="fa fa-user"></i> <span class="">{{"template.crud.new" | translate}}</span></button>
@@ -94,9 +106,9 @@
     </div>
   </div>
 </div>
-<div data-component="crn-form" id="crn-form-form-Comentario">
+<div data-component="crn-form" id="crn-form-form-Comentario" onload="dataHora()">
   <div class="form" ng-show="Comentario.editing || Comentario.inserting">
-    <form crn-datasource="Comentario" class="">
+    <form crn-datasource="Comentario" class="" onload="atualizarDataHora()">
       <div class="tool-bar" ng-hide="datasource.editing || datasource.inserting">
         <button class="btn btn-primary" ng-click="datasource.startInserting()"><i class="glyphicon glyphicon-plus-sign"></i></button>
         <button class="btn btn-success" ng-click="datasource.startEditing()"><i class="glyphicon glyphicon-edit"></i></button>
@@ -110,6 +122,17 @@
       </div>
       <br/>
       <fieldset ng-disabled="!datasource.editing &amp;&amp; !datasource.inserting">
+        <div data-component="crn-textinput" id="crn-textinput-data">
+          <div class="form-group">
+            <label for="textinput-data" class="">Data</label>
+            <div style="position:relative">
+              <input type="text" 
+              ng-model="Comentario.active.data" class="form-control" id="textinput-data"  value=''
+
+            >
+            </div>
+          </div>
+        </div>
         <div data-component="crn-textinput" id="crn-textinput-texto">
           <div class="form-group">
             <label for="textinput-texto" class="">Texto</label>

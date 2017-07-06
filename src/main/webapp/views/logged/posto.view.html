@@ -99,16 +99,16 @@
     <div data-component="crn-datasource" class="component-holder">
           <datasource filter="" name="ComentarioGrid" enabled="{{Posto.editing || Posto.inserting}}" entity="api/rest/Posto/{{Posto.active.id}}/Comentario" keys="id" rows-per-page="100" lazy="true" auto-post="true" dependent-lazy-post="Posto" dependent-lazy-post-field="posto"></datasource>
         </div>
-        <button class="btn btn-danger" onclick="$('#modalComentarioGrid').modal('show');" ng-click="ComentarioGrid.startInserting();"><i class="glyphicon glyphicon-comment"></i> <span class="">{{"Add" | translate}} Comentario</span> </button>
+        <button class="btn btn-danger" onclick="$('#modalComentarioGrid').modal('show');" ng-click="ComentarioGrid.startInserting();"><i class="glyphicon glyphicon-comment"></i> <span class="">{{"Add" | translate}} Comentário</span> </button>
         
-        <button class="btn btn-info"  ng-click="redirectComentarios()"><i class="glyphicon glyphicon-list-alt"></i> <span class="">Ver Comentarios</span> </button>
+        <button class="btn btn-info"  ng-click="redirectComentarios()"><i class="glyphicon glyphicon-list-alt"></i> <span class="">Ver Comentários</span> </button>
 
         <div class="modal fade" id="modalComentarioGrid">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="{{'Home.view.Close' | translate}}"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Comentario</h4>
+                <h4 class="modal-title">Comentário</h4>
               </div>
               <div class="modal-body">
                 <div class="text-danger wrapper text-center" ng-show="authError">
@@ -132,7 +132,7 @@
                   <div data-component="crn-textinput" id="crn-textinput-nota">
                     <div class="form-group">
                       <label for="textinput-nota">Nota</label>
-                      <input ng-model="ComentarioGrid.active.nota" class="form-control" id="textinput-nota" placeholder="Nota" type="number">
+                      <input ng-model="ComentarioGrid.active.nota" class="form-control" id="textinput-nota" placeholder="Nota" type="number" max="5" required="" title="Por favor, Insira uma nota até 5.">
                     </div>
                   </div>
                   <div data-component="crn-textinput" id="crn-textinput-moderado">

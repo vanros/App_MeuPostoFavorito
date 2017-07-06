@@ -16,7 +16,7 @@
               <li class="active"><a href="#/home/logged/userrole" class="component-holder" data-component="crn-anchor">UserRole</a><a href="#/home/admin/role" class="component-holder" data-component="crn-anchor">{{"Home.view.Roles" | translate}}</a><a href="#/home/admin/user" class="component-holder" data-component="crn-anchor">{{"Home.view.Users" | translate}}</a></li> 
               
               
-            <li><a href="#/home/logged/carro" class="component-holder" data-component="crn-anchor">Carro</a></li><li><a href="#/home/logged/posto" class="component-holder" data-component="crn-anchor">Posto</a></li><li><a href="#/home/logged/abastecimento" class="component-holder" data-component="crn-anchor">Abastecimento</a></li><li><a href="#/home/logged/comentario" class="component-holder" data-component="crn-anchor">Comentario</a></li></ul> </li> 
+            <li><a href="#/home/logged/carro" class="component-holder" data-component="crn-anchor">Carro</a></li><li><a href="#/home/logged/posto" class="component-holder" data-component="crn-anchor">Posto</a></li><li><a href="#/home/logged/abastecimento" class="component-holder" data-component="crn-anchor">Abastecimento</a></li><li><a href="#/home/logged/comentario" class="component-holder" data-component="crn-anchor">Comentário</a></li></ul> </li> 
           <li class="dropdown component-holder navbar-right" data-component="crn-menu-item"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-lg fa-gear"></i> <span>{{"ChooseTheme" | translate}}</span> <span class="caret"></span> </a> 
             <ul class="dropdown-menu"> 
               <li ng-repeat="theme in themes" ng-click="changeTheme(theme)"> <a href="javascript:void(0);" ng-class="{'bg-primary': myTheme==theme}">{{theme}} <i class="fa fa-lg fa-check pull-right" ng-if="myTheme==theme"></i></a></li> 
@@ -47,13 +47,13 @@
           </div> 
           <div class="list-group list-group-sm"> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" type="password" ___placeholder="{Old Password}" __________________placeholder="{Old Password}" _____________________placeholder="{{'Home.view.Old Password' | translate}}" ______placeholder="{Old Password}"> 
+              <input class="form-control no-border" id="oldPassword" placeholder="{Old Password}" type="password" __________________placeholder="{Old Password}" ______placeholder="{Old Password}" _____________________placeholder="{{'Home.view.Old Password' | translate}}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" type="password" ___placeholder="{New Password}" __________________placeholder="{New Password}" _____________________placeholder="{{'Home.view.New Password' | translate}}" ______placeholder="{New Password}"> 
+              <input class="form-control no-border" id="newPassword" placeholder="{New Password}" type="password" __________________placeholder="{New Password}" ______placeholder="{New Password}" _____________________placeholder="{{'Home.view.New Password' | translate}}"> 
             </div> 
             <div class="list-group-item"> 
-              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" type="password" ___placeholder="{Confirmation}" __________________placeholder="{Confirmation}" _____________________placeholder="{{'Home.view.Confirmation' | translate}}" ______placeholder="{Confirmation}"> 
+              <input class="form-control no-border" id="newPasswordConfirmation" placeholder="{Confirmation}" type="password" __________________placeholder="{Confirmation}" ______placeholder="{Confirmation}" _____________________placeholder="{{'Home.view.Confirmation' | translate}}"> 
             </div> 
           </div> 
         </form> 

@@ -99,7 +99,7 @@ public class Comentario implements Serializable {
    * @generated
    */
   public java.util.Date getData(){
-    return new Date();
+    return this.data;
   }
   
   /**
@@ -108,7 +108,7 @@ public class Comentario implements Serializable {
    * @generated
    */
   public Comentario setData(java.util.Date data){
-    this.data = new Date();
+    this.data = data;
     return this;
   }
   

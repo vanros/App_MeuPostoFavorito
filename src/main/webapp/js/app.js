@@ -15,6 +15,7 @@ var app = (function() {
       'tmh.dynamicLocale',
       'ui-notification',
       'ui.bootstrap',
+      'ui.utils.masks',
       'ngFileUpload'
     ])
 
@@ -94,6 +95,12 @@ var app = (function() {
           url: "/home",
           controller: 'HomeController',
           templateUrl: 'views/logged/home.view.html'
+        })
+        
+        .state('comentario', {
+          url: "/home/logged/comentario",
+          controller: 'ComentariosController',
+          templateUrl: 'views/logged/comentario.view.html'
         })
         
         .state('mediaRentabilidadeCarro', {
