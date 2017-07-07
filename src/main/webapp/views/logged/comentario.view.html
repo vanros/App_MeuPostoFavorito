@@ -8,23 +8,17 @@
 .form-group label i.fa:before {
   content:'\f005';
   color: #FC0;
+  font-size: 4em;
 }
 .form-group input[type=radio]:checked ~ label i.fa:before {
   color: #CCC;
+  
 }   
  
 </style>
 
 <div class="row" ng-hide="Comentario.inserting || Comentario.editing">
-  <div class="col-md-2">
-    <div class="component-holder ng-binding ng-scope" data-component="crn-datepicker" id="crn-datepicker-32329">
-      <div class="form-group">
-        <div style="position:relative">
-          <input type="text" as-date="" class="form-control" format="DD/MM/YYYY HH:mm:ss" ng-model="data" placeholder="Data">
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <div class="col-md-2">
     <div>
       <label for="textinput-filter">{{"template.crud.search" | translate}} Texto</label>
@@ -40,7 +34,7 @@
 </div>
 <br>
 <div data-component="crn-datasource" id="crn-datasource-763276" class="component-holder">
-  <datasource filter="?data={{data| date:'dd/MM/yyyy HH:mm:ss'}}&amp;texto={{texto}}&amp;moderado={{moderado}}" name="Comentario" entity="api/rest/Comentario/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
+  <datasource filter="?texto={{texto}}&moderado={{moderado}}" name="Comentario" entity="api/rest/Comentario/specificSearch" keys="id" rows-per-page="100" delete-message="Deseja remover?"></datasource>
 </div>
 <div data-component="crn-button" id="crn-button-564202">
   <button class="btn btn-primary" type="submit" onclick="" ng-click="Comentario.startInserting()" ng-hide="Comentario.inserting || Comentario.editing"><i class="fa fa-user"></i> <span>{{"template.crud.new" | translate}}</span></button>
@@ -198,7 +192,7 @@
             <label for="textinput-moderado">Moderado</label>
             <input type="checkbox" ng-model="Comentario.active.moderado" id="textinput-moderado" placeholder="Moderado">
           </div><label for="combobox-user">Nota</label><div class="form-group">
-            <input type="radio" id="cm_star-empty" name="fb" value="" checked="">
+            <input type="radio" id="cm_star-empty" name="fb" value="0" checked="">
             <label for="cm_star-1"><i class="fa"></i></label>
             <input type="radio" id="cm_star-1" name="fb" value="1" ng-model="Comentario.active.nota">
             <label for="cm_star-2"><i class="fa"></i></label>

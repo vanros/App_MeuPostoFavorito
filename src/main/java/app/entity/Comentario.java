@@ -49,7 +49,7 @@ public class Comentario implements Serializable {
   /**
   * @generated
   */
-  @Column(name = "moderado", nullable = true, unique = false, insertable=true, updatable=true)
+  @Column(name = "moderado", nullable = true, unique = false, insertable=false, updatable=true)
   private java.lang.Boolean moderado;
   
   /**
